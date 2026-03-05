@@ -110,42 +110,41 @@ def main():
     page = st.session_state.get("page", "login")
 
     if page == "login" or "user" not in st.session_state:
-        from pages.login import render
+        from views.login import render
         render()
         return
 
     render_sidebar()
 
     if page == "agent_home":
-        from pages.agent_home import render
+        from views.agent_home import render
         render()
     elif page == "scenario_browser":
-        from pages.scenario_browser import render
+        from views.scenario_browser import render
         render()
     elif page == "pre_call_briefing":
-        from pages.pre_call_briefing import render
+        from views.pre_call_briefing import render
         render()
     elif page == "active_call":
-        from pages.active_call import render
+        from views.active_call import render
         render()
     elif page == "evaluating":
-        from pages.scorecard import render_evaluating
+        from views.scorecard import render_evaluating
         render_evaluating()
     elif page == "scorecard":
-        from pages.scorecard import render
+        from views.scorecard import render
         render()
     elif page == "manager_dashboard":
-        from pages.manager_dashboard import render
+        from views.manager_dashboard import render
         render()
     elif page == "agent_detail":
-        from pages.agent_detail import render
+        from views.agent_detail import render
         render()
     elif page == "achievements":
-        from pages.achievements import render
+        from views.achievements import render
         render()
     else:
         st.error(f"Neznáma stránka: {page}")
 
 
-if __name__ == "__main__":
-    main()
+main()
