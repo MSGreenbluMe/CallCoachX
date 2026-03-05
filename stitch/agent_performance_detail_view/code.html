@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Agent Performance Detail View</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen">
+<div class="relative flex h-screen w-full flex-row overflow-hidden">
+<!-- Sidebar -->
+<div class="flex h-full w-64 flex-col justify-between bg-white dark:bg-[#15222d] border-r border-slate-200 dark:border-slate-800 p-4 shrink-0">
+<div class="flex flex-col gap-4">
+<div class="flex gap-3 items-center mb-6">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Company Logo Abstract Gradient" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCmqtH-TWld_nucWkB0_CSKH_EAn1NjLPmmwcW8zC4I-2p-Zkgga9bTpcGvUHcm46RTCmd8m6BbVzGj_bzw4WrbDMwvu3v3xL8JczTzefLJ2Q8I8I6n5HSdWZL8RGFfzOUq1v_RkazcLpA2OwpbnUsAQUB19Fl7AIKdE6R1rAlfLkTHWAjzD5LMOMl0SNgQZSj5O92-32ZgKixY3r6le8Z_rBiYM35e09n5ZqNcLdqja3JlB3q5_0u9s2pKwKJaeFRS3dKGjtMCLdz_");'></div>
+<div class="flex flex-col">
+<h1 class="text-slate-900 dark:text-white text-base font-medium leading-normal">CallCoach</h1>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">Manager Portal</p>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400">dashboard</span>
+<p class="text-slate-700 dark:text-slate-300 text-sm font-medium leading-normal">Dashboard</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 dark:bg-primary/20" href="#">
+<span class="material-symbols-outlined text-primary">group</span>
+<p class="text-primary text-sm font-medium leading-normal">Agents</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400">phone_in_talk</span>
+<p class="text-slate-700 dark:text-slate-300 text-sm font-medium leading-normal">Scenarios</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400">bar_chart</span>
+<p class="text-slate-700 dark:text-slate-300 text-sm font-medium leading-normal">Reports</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400">settings</span>
+<p class="text-slate-700 dark:text-slate-300 text-sm font-medium leading-normal">Settings</p>
+</a>
+</div>
+</div>
+</div>
+<!-- Main Content -->
+<div class="flex-1 flex flex-col h-full overflow-y-auto">
+<!-- Header -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-[#15222d] px-8 py-4 sticky top-0 z-10">
+<div class="flex items-center gap-4">
+<a class="text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">arrow_back</span>
+</a>
+<h2 class="text-slate-900 dark:text-white text-xl font-bold leading-tight tracking-tight">Agent Profile</h2>
+</div>
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User Avatar Placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA1rNKPT2SHnUWXMmfaLPlSr3dYtGQWDCP1J_GJMXo1UvkIjBkt6Dmd1JHvseDR2-7OolnDjLzks5iPF0YZr5xw3Bl19cYWFE2m-LIdSKRS5NUR0zttQomb0tgCvekXViaJVrONZmSujG2RaBKGMoxzstIkqq1MhUcEeClGaRNm8fqp7XiGzaZ1xgHB8c7xaHLEQvmvktExSI7igDFh7BU_QHaB_GZVGELJoYijG226ZXYv0VHaR4sa0Nf_-OiNYhShNdbFGgQEbSWj");'></div>
+</div>
+</header>
+<div class="p-8 max-w-7xl mx-auto w-full flex flex-col gap-8">
+<!-- Profile Card -->
+<div class="flex w-full flex-col gap-4 sm:flex-row sm:justify-between sm:items-center bg-white dark:bg-[#1a2936] p-6 rounded-xl border border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-6">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-24 border-4 border-primary/20" data-alt="Michal K Avatar Portrait" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCP7IpwENI3eOANDeZD-dxCbpsSoMW01aJ_2PlwcQtoUZp40iYcBPSlKJiiQy_8ID1xZtZiNseqjrfWcbOT5OnFB_egQEK63x0JNEzoTvWcq-2Sxz_fQAXlMnt_DGRhsBIbm8oaGcbLci32yXfQpqiVo3vOMvQDi7LSmWkbkBdeUez0bUL03X7WozM6rfwqSgsN2SARSt2uCePrQJwh-UXwb8sFLDb9jfd_XV2wgQXe25I049JIzakUERjcln__sWgsr0NkmFHBQfuO");'></div>
+<div class="flex flex-col justify-center gap-2">
+<div class="flex items-center gap-3">
+<h3 class="text-slate-900 dark:text-white text-2xl font-bold leading-tight tracking-tight">Michal K.</h3>
+<span class="px-2 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full border border-primary/20">Level 12</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Top Performer | Total XP: 14,500</p>
+</div>
+</div>
+<button class="flex items-center justify-center gap-2 rounded-lg px-6 py-2.5 bg-primary text-white text-sm font-bold shadow-sm hover:bg-primary/90 transition-colors w-full sm:w-auto">
+<span class="material-symbols-outlined text-[20px]">school</span>
+<span>Assign Training</span>
+</button>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-[#1a2936] border border-slate-200 dark:border-slate-800">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Avg Score</p>
+<div class="flex items-end justify-between">
+<p class="text-slate-900 dark:text-white text-3xl font-bold leading-tight">86%</p>
+<p class="text-emerald-500 text-sm font-bold flex items-center"><span class="material-symbols-outlined text-[16px]">trending_up</span> +5%</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-[#1a2936] border border-slate-200 dark:border-slate-800">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Total Sessions</p>
+<div class="flex items-end justify-between">
+<p class="text-slate-900 dark:text-white text-3xl font-bold leading-tight">42</p>
+<p class="text-slate-400 dark:text-slate-500 text-sm font-bold flex items-center">-</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-[#1a2936] border border-slate-200 dark:border-slate-800">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Total Training Time</p>
+<div class="flex items-end justify-between">
+<p class="text-slate-900 dark:text-white text-3xl font-bold leading-tight">8.5h</p>
+<p class="text-emerald-500 text-sm font-bold flex items-center"><span class="material-symbols-outlined text-[16px]">trending_up</span> +1.2h</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-[#1a2936] border border-slate-200 dark:border-slate-800">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Completion Rate</p>
+<div class="flex items-end justify-between">
+<p class="text-slate-900 dark:text-white text-3xl font-bold leading-tight">95%</p>
+<p class="text-emerald-500 text-sm font-bold flex items-center"><span class="material-symbols-outlined text-[16px]">trending_up</span> +2%</p>
+</div>
+</div>
+</div>
+<!-- Coaching Insight -->
+<div class="flex items-start gap-4 p-5 rounded-xl bg-primary/10 border border-primary/20">
+<div class="p-2 bg-primary/20 rounded-full text-primary mt-1">
+<span class="material-symbols-outlined">lightbulb</span>
+</div>
+<div>
+<h4 class="text-primary font-bold text-base mb-1">Coaching Insight</h4>
+<p class="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
+                            Michal excels at de-escalation but could improve on Closing Statements. Recommended scenario: <span class="font-semibold text-slate-900 dark:text-white">"Effective Call Wrap-ups"</span>.
+                        </p>
+</div>
+</div>
+<!-- Charts Section -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<!-- Performance Trend Chart placeholder -->
+<div class="flex flex-col gap-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#1a2936] p-6">
+<div>
+<p class="text-slate-900 dark:text-white text-lg font-bold leading-normal">Performance Trend</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Last 3 Months</p>
+</div>
+<div class="flex-1 flex flex-col justify-end relative h-48 mt-4">
+<!-- Simplified Chart representation -->
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 400 150" xmlns="http://www.w3.org/2000/svg">
+<path class="text-primary" d="M0,120 Q50,110 100,90 T200,60 T300,40 T400,20" fill="none" stroke="currentColor" stroke-width="3"></path>
+<path class="text-primary/10" d="M0,120 Q50,110 100,90 T200,60 T300,40 T400,20 L400,150 L0,150 Z" fill="currentColor"></path>
+</svg>
+<div class="flex justify-between w-full mt-2 border-t border-slate-200 dark:border-slate-700 pt-2 text-xs text-slate-500 dark:text-slate-400">
+<span>Jan</span>
+<span>Feb</span>
+<span>Mar</span>
+</div>
+</div>
+</div>
+<!-- Skill Distribution Radar placeholder -->
+<div class="flex flex-col gap-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#1a2936] p-6">
+<div>
+<p class="text-slate-900 dark:text-white text-lg font-bold leading-normal">Skill Distribution vs Team Avg</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Top Skill: De-escalation</p>
+</div>
+<div class="grid gap-y-4 grid-cols-[auto_1fr_auto] items-center mt-4">
+<!-- Skill bars -->
+<p class="text-slate-600 dark:text-slate-300 text-sm font-medium w-32 truncate">Empathy</p>
+<div class="h-2 rounded-full bg-slate-100 dark:bg-slate-800 w-full overflow-hidden relative">
+<div class="absolute top-0 left-0 h-full bg-primary rounded-full" style="width: 85%;"></div>
+<div class="absolute top-0 left-0 h-full bg-slate-400/50 dark:bg-slate-500/50 rounded-full" style="width: 70%; mix-blend-mode: multiply;"></div>
+</div>
+<p class="text-slate-900 dark:text-white text-sm font-bold pl-4">85%</p>
+<p class="text-slate-600 dark:text-slate-300 text-sm font-medium w-32 truncate">Tech Knowledge</p>
+<div class="h-2 rounded-full bg-slate-100 dark:bg-slate-800 w-full overflow-hidden relative">
+<div class="absolute top-0 left-0 h-full bg-primary rounded-full" style="width: 75%;"></div>
+<div class="absolute top-0 left-0 h-full bg-slate-400/50 dark:bg-slate-500/50 rounded-full" style="width: 80%; mix-blend-mode: multiply;"></div>
+</div>
+<p class="text-slate-900 dark:text-white text-sm font-bold pl-4">75%</p>
+<p class="text-slate-600 dark:text-slate-300 text-sm font-medium w-32 truncate">Resolution</p>
+<div class="h-2 rounded-full bg-slate-100 dark:bg-slate-800 w-full overflow-hidden relative">
+<div class="absolute top-0 left-0 h-full bg-primary rounded-full" style="width: 90%;"></div>
+<div class="absolute top-0 left-0 h-full bg-slate-400/50 dark:bg-slate-500/50 rounded-full" style="width: 75%; mix-blend-mode: multiply;"></div>
+</div>
+<p class="text-slate-900 dark:text-white text-sm font-bold pl-4">90%</p>
+<p class="text-slate-600 dark:text-slate-300 text-sm font-medium w-32 truncate">Professionalism</p>
+<div class="h-2 rounded-full bg-slate-100 dark:bg-slate-800 w-full overflow-hidden relative">
+<div class="absolute top-0 left-0 h-full bg-primary rounded-full" style="width: 88%;"></div>
+<div class="absolute top-0 left-0 h-full bg-slate-400/50 dark:bg-slate-500/50 rounded-full" style="width: 85%; mix-blend-mode: multiply;"></div>
+</div>
+<p class="text-slate-900 dark:text-white text-sm font-bold pl-4">88%</p>
+<p class="text-slate-600 dark:text-slate-300 text-sm font-medium w-32 truncate">Closing</p>
+<div class="h-2 rounded-full bg-slate-100 dark:bg-slate-800 w-full overflow-hidden relative">
+<div class="absolute top-0 left-0 h-full bg-amber-500 rounded-full" style="width: 60%;"></div>
+<div class="absolute top-0 left-0 h-full bg-slate-400/50 dark:bg-slate-500/50 rounded-full" style="width: 75%; mix-blend-mode: multiply;"></div>
+</div>
+<p class="text-slate-900 dark:text-white text-sm font-bold pl-4">60%</p>
+</div>
+<div class="flex gap-4 mt-auto pt-4 text-xs">
+<div class="flex items-center gap-1.5"><div class="w-3 h-3 rounded-sm bg-primary"></div><span class="text-slate-500 dark:text-slate-400">Agent</span></div>
+<div class="flex items-center gap-1.5"><div class="w-3 h-3 rounded-sm bg-slate-400/50 dark:bg-slate-500/50"></div><span class="text-slate-500 dark:text-slate-400">Team Avg</span></div>
+</div>
+</div>
+</div>
+<!-- Session History Table -->
+<div class="flex flex-col rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#1a2936] overflow-hidden mb-8">
+<div class="px-6 py-4 border-b border-slate-200 dark:border-slate-800">
+<h3 class="text-slate-900 dark:text-white text-lg font-bold">Recent Sessions</h3>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left text-sm whitespace-nowrap">
+<thead class="bg-slate-50 dark:bg-[#15222d] text-slate-500 dark:text-slate-400">
+<tr>
+<th class="px-6 py-3 font-medium">Scenario Name</th>
+<th class="px-6 py-3 font-medium">Date</th>
+<th class="px-6 py-3 font-medium">Score</th>
+<th class="px-6 py-3 font-medium">Duration</th>
+<th class="px-6 py-3 font-medium text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
+<tr class="hover:bg-slate-50 dark:hover:bg-[#1c2c3b] transition-colors">
+<td class="px-6 py-4 font-medium text-slate-900 dark:text-white">Angry Customer Resolution</td>
+<td class="px-6 py-4">Oct 24, 2023</td>
+<td class="px-6 py-4"><span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-500/20 dark:text-emerald-400">92%</span></td>
+<td class="px-6 py-4">12m 45s</td>
+<td class="px-6 py-4 text-right"><a class="text-primary hover:text-primary/80 font-medium" href="#">View Details</a></td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-[#1c2c3b] transition-colors">
+<td class="px-6 py-4 font-medium text-slate-900 dark:text-white">Billing Inquiry Flow</td>
+<td class="px-6 py-4">Oct 22, 2023</td>
+<td class="px-6 py-4"><span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-500/20 dark:text-emerald-400">88%</span></td>
+<td class="px-6 py-4">08m 20s</td>
+<td class="px-6 py-4 text-right"><a class="text-primary hover:text-primary/80 font-medium" href="#">View Details</a></td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-[#1c2c3b] transition-colors">
+<td class="px-6 py-4 font-medium text-slate-900 dark:text-white">Product Upsell Attempt</td>
+<td class="px-6 py-4">Oct 20, 2023</td>
+<td class="px-6 py-4"><span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-amber-100 text-amber-800 dark:bg-amber-500/20 dark:text-amber-400">76%</span></td>
+<td class="px-6 py-4">15m 10s</td>
+<td class="px-6 py-4 text-right"><a class="text-primary hover:text-primary/80 font-medium" href="#">View Details</a></td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-[#1c2c3b] transition-colors">
+<td class="px-6 py-4 font-medium text-slate-900 dark:text-white">Technical Support Tier 1</td>
+<td class="px-6 py-4">Oct 18, 2023</td>
+<td class="px-6 py-4"><span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-500/20 dark:text-emerald-400">85%</span></td>
+<td class="px-6 py-4">10m 05s</td>
+<td class="px-6 py-4 text-right"><a class="text-primary hover:text-primary/80 font-medium" href="#">View Details</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

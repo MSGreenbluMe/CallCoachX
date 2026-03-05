@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Manager Scenario Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        @theme {
+            --color-primary: #137fec;
+            --color-background-light: #f6f7f8;
+            --color-background-dark: #101922;
+            --font-display: "Inter", sans-serif;
+            --radius: 0.25rem;
+            --radius-lg: 0.5rem;
+            --radius-xl: 0.75rem;
+            --radius-full: 9999px;
+        }
+        
+        @layer utilities {
+            .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+            }
+            .scrollbar-hide {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+        }
+    </style>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "var(--color-primary)",
+                        "background-light": "var(--color-background-light)",
+                        "background-dark": "var(--color-background-dark)",
+                        "surface-dark": "#182430",
+                        "surface-darker": "#141d26",
+                        "border-dark": "#2a3d52",
+                        "text-muted": "#94a3b8"
+                    },
+                    fontFamily: {
+                        "display": "var(--font-display)"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "var(--radius)",
+                        "lg": "var(--radius-lg)",
+                        "xl": "var(--radius-xl)",
+                        "full": "var(--radius-full)"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-64 bg-surface-darker border-r border-border-dark flex flex-col flex-shrink-0">
+<!-- Logo -->
+<div class="h-16 flex items-center px-6 border-b border-border-dark">
+<div class="flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined text-2xl">headset_mic</span>
+<h1 class="text-xl font-bold text-slate-100 tracking-tight">CallCoach</h1>
+</div>
+</div>
+<!-- Navigation -->
+<nav class="flex-1 overflow-y-auto py-6 px-4 space-y-2">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-300 hover:bg-surface-dark hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span class="text-sm font-medium">Team Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-300 hover:bg-surface-dark hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">bar_chart</span>
+<span class="text-sm font-medium">Agent Performance</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">edit_document</span>
+<span class="text-sm font-medium">Scenario Management</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-300 hover:bg-surface-dark hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+<!-- User Profile -->
+<div class="p-4 border-t border-border-dark">
+<div class="flex items-center gap-3">
+<img alt="Manager avatar" class="w-10 h-10 rounded-full object-cover border border-border-dark" data-alt="Manager profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXSFnVMUqBdNYPMy1VAHX1KGZqBBbuBejm3gP7mvHe-KvNPh3Twt5LM3o4hC4OTsE7UgSuqMQ2IGrX03myDi8xpDovOKfbBeHL0cQNK2sYEr9fYpQAeCnNYdzV-_aKEhSVINzn2qHIxNzqQJ4ifw4LVEaJlXI3VeX-aAnegeQ2s_0_fNwPAPaUY-AGlllQokQUFbdw1gpi7ipdcLR81ubWY0Wva_y0DXf-1LHXlWASTPyVZ_GW4DPP6l5c4CAk9tdQJjva5zqIrO4e"/>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-medium text-slate-100 truncate">Alex Jensen</p>
+<p class="text-xs text-text-muted truncate">Training Manager</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col min-w-0 overflow-hidden">
+<!-- Header -->
+<header class="h-16 flex items-center justify-between px-8 bg-surface-darker border-b border-border-dark shrink-0">
+<h2 class="text-xl font-bold text-slate-100">Scenario Management</h2>
+<div class="flex items-center gap-4">
+<!-- Search -->
+<div class="relative w-64">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-text-muted">
+<span class="material-symbols-outlined text-lg">search</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-2 border border-border-dark rounded-lg leading-5 bg-surface-dark text-slate-300 placeholder-text-muted focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition-colors" placeholder="Search scenarios..." type="text"/>
+</div>
+<!-- Create Button -->
+<button class="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-sm">
+<span class="material-symbols-outlined text-lg">add</span>
+                        Create New Scenario
+                    </button>
+</div>
+</header>
+<!-- Content Area -->
+<div class="flex-1 overflow-y-auto p-8 bg-background-dark">
+<div class="max-w-7xl mx-auto space-y-6">
+<!-- Page Description & Bulk Actions -->
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+<div>
+<p class="text-text-muted text-sm">Manage, evaluate, and configure training scenarios for operators.</p>
+</div>
+<div class="flex items-center gap-2 bg-surface-dark p-1 rounded-lg border border-border-dark">
+<button class="p-1.5 text-text-muted hover:text-slate-100 hover:bg-surface-darker rounded transition-colors" title="Delete Selected">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+<div class="w-px h-4 bg-border-dark mx-1"></div>
+<button class="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-slate-300 hover:text-slate-100 hover:bg-surface-darker rounded transition-colors">
+                                Bulk Actions
+                                <span class="material-symbols-outlined text-lg">expand_more</span>
+</button>
+</div>
+</div>
+<!-- Table Container -->
+<div class="bg-surface-darker border border-border-dark rounded-xl shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-dark text-xs uppercase tracking-wider text-text-muted border-b border-border-dark">
+<th class="px-6 py-4 font-medium w-12 text-center">
+<input class="rounded border-border-dark bg-surface-darker text-primary focus:ring-primary focus:ring-offset-surface-darker" type="checkbox"/>
+</th>
+<th class="px-6 py-4 font-medium min-w-[250px]">Scenario Name</th>
+<th class="px-6 py-4 font-medium w-32">Category</th>
+<th class="px-6 py-4 font-medium w-32">Difficulty</th>
+<th class="px-6 py-4 font-medium w-32">Usage Stats</th>
+<th class="px-6 py-4 font-medium w-40">Team Avg Score</th>
+<th class="px-6 py-4 font-medium w-24 text-center">Status</th>
+<th class="px-6 py-4 font-medium w-32 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-dark text-sm">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-dark/50 transition-colors group">
+<td class="px-6 py-4 text-center">
+<input class="rounded border-border-dark bg-surface-darker text-primary focus:ring-primary focus:ring-offset-surface-darker" type="checkbox"/>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-red-500/10 text-red-400 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-sm">sentiment_very_dissatisfied</span>
+</div>
+<div>
+<p class="font-medium text-slate-200 group-hover:text-primary transition-colors cursor-pointer">Angry Customer - Billing</p>
+<p class="text-xs text-text-muted mt-0.5">Updated 2 days ago</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-surface-dark text-slate-300 border border-border-dark">
+                                                Support
+                                            </span>
+</td>
+<td class="px-6 py-4">
+<div class="flex text-amber-400 text-sm">
+<span class="material-symbols-outlined filled text-base">star</span>
+<span class="material-symbols-outlined filled text-base">star</span>
+<span class="material-symbols-outlined filled text-base">star</span>
+<span class="material-symbols-outlined filled text-base">star</span>
+<span class="material-symbols-outlined text-border-dark text-base">star</span>
+</div>
+</td>
+<td class="px-6 py-4 text-slate-300">
+                                            142
+                                        </td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="flex-1 h-1.5 bg-surface-dark rounded-full overflow-hidden">
+<div class="h-full bg-amber-500 rounded-full" style="width: 76%"></div>
+</div>
+<span class="text-xs font-medium text-slate-300 w-8">76%</span>
+</div>
+</td>
+<td class="px-6 py-4 text-center">
+<!-- Toggle -->
+<button aria-checked="true" class="relative inline-flex h-5 w-9 shrink-0 cursor-pointer items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-surface-darker" role="switch">
+<span class="sr-only">Toggle active status</span>
+<span aria-hidden="true" class="pointer-events-none absolute mx-auto h-4 w-8 rounded-full bg-primary transition-colors duration-200 ease-in-out"></span>
+<span aria-hidden="true" class="pointer-events-none absolute left-0 inline-block h-5 w-5 translate-x-4 transform rounded-full border border-border-dark bg-white shadow ring-0 transition-transform duration-200 ease-in-out"></span>
+</button>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 text-text-muted hover:text-primary rounded transition-colors" title="Edit">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="p-1.5 text-text-muted hover:text-slate-200 rounded transition-colors" title="Duplicate">
+<span class="material-symbols-outlined text-lg">content_copy</span>
+</button>
+<button class="p-1.5 text-text-muted hover:text-red-400 rounded transition-colors" title="Delete">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-dark/50 transition-colors group">
+<td class="px-6 py-4 text-center">
+<input class="rounded border-border-dark bg-surface-darker text-primary focus:ring-primary focus:ring-offset-surface-darker" type="checkbox"/>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+</div>
+<div>
+<p class="font-medium text-slate-200 group-hover:text-primary transition-colors cursor-pointer">Upsell Premium Plan</p>
+<p class="text-xs text-text-muted mt-0.5">Updated 1 week ago</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-surface-dark text-slate-300 border border-border-dark">
+                                                Sales
+                                            </span>
+</td>
+<td class="px-6 py-4">
+<div class="flex text-amber-400 text-sm">
+<span class="material-symbols-outlined filled text-base">star</span>
+<span class="material-symbols-outlined filled text-base">star</span>
+<span class="material-symbols-outlined filled text-base">star</span>
+<span class="material-symbols-outlined text-border-dark text-base">star</span>
+<span class="material-symbols-outlined text-border-dark text-base">star</span>
+</div>
+</td>
+<td class="px-6 py-4 text-slate-300">
+                                            89
+                                        </td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="flex-1 h-1.5 bg-surface-dark rounded-full overflow-hidden">
+<div class="h-full bg-emerald-500 rounded-full" style="width: 82%"></div>
+</div>
+<span class="text-xs font-medium text-slate-300 w-8">82%</span>
+</div>
+</td>
+<td class="px-6 py-4 text-center">
+<!-- Toggle -->
+<button aria-checked="true" class="relative inline-flex h-5 w-9 shrink-0 cursor-pointer items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-surface-darker" role="switch">
+<span class="sr-only">Toggle active status</span>
+<span aria-hidden="true" class="pointer-events-none absolute mx-auto h-4 w-8 rounded-full bg-primary transition-colors duration-200 ease-in-out"></span>
+<span aria-hidden="true" class="pointer-events-none absolute left-0 inline-block h-5 w-5 translate-x-4 transform rounded-full border border-border-dark bg-white shadow ring-0 transition-transform duration-200 ease-in-out"></span>
+</button>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 text-text-muted hover:text-primary rounded transition-colors" title="Edit">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="p-1.5 text-text-muted hover:text-slate-200 rounded transition-colors" title="Duplicate">
+<span class="material-symbols-outlined text-lg">content_copy</span>
+</button>
+<button class="p-1.5 text-text-muted hover:text-red-400 rounded transition-colors" title="Delete">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-dark/50 transition-colors group">
+<td class="px-6 py-4 text-center">
+<input class="rounded border-border-dark bg-surface-darker text-primary focus:ring-primary focus:ring-offset-surface-darker" type="checkbox"/>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-purple-500/10 text-purple-400 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-sm">heart_broken</span>
+</div>
+<div>
+<p class="font-medium text-slate-200 group-hover:text-primary transition-colors cursor-pointer">Cancel Subscription</p>
+<p class="text-xs text-text-muted mt-0.5">Updated 3 weeks ago</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-surface-dark text-slate-300 border border-border-dark">
+                                                Retention
+                                            </span>
+</td>
+<td class="px-6 py-4">
+<div class="flex text-amber-400 text-sm">
+<span class="material-symbols-outlined filled text-base">star</span>
+<span class="material-symbols-outlined filled text-base">star</span>
+<span class="material-symbols-outlined filled text-base">star</span>
+<span class="material-symbols-outlined filled text-base">star</span>
+<span class="material-symbols-outlined filled text-base">star</span>
+</div>
+</td>
+<td class="px-6 py-4 text-slate-300">
+                                            210
+                                        </td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="flex-1 h-1.5 bg-surface-dark rounded-full overflow-hidden">
+<div class="h-full bg-red-400 rounded-full" style="width: 64%"></div>
+</div>
+<span class="text-xs font-medium text-slate-300 w-8">64%</span>
+</div>
+</td>
+<td class="px-6 py-4 text-center">
+<!-- Toggle Inactive -->
+<button aria-checked="false" class="relative inline-flex h-5 w-9 shrink-0 cursor-pointer items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-surface-darker" role="switch">
+<span class="sr-only">Toggle active status</span>
+<span aria-hidden="true" class="pointer-events-none absolute mx-auto h-4 w-8 rounded-full bg-border-dark transition-colors duration-200 ease-in-out"></span>
+<span aria-hidden="true" class="pointer-events-none absolute left-0 inline-block h-5 w-5 transform rounded-full border border-border-dark bg-slate-300 shadow ring-0 transition-transform duration-200 ease-in-out"></span>
+</button>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 text-text-muted hover:text-primary rounded transition-colors" title="Edit">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="p-1.5 text-text-muted hover:text-slate-200 rounded transition-colors" title="Duplicate">
+<span class="material-symbols-outlined text-lg">content_copy</span>
+</button>
+<button class="p-1.5 text-text-muted hover:text-red-400 rounded transition-colors" title="Delete">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 border-t border-border-dark flex items-center justify-between bg-surface-darker">
+<p class="text-sm text-text-muted">Showing <span class="font-medium text-slate-300">1</span> to <span class="font-medium text-slate-300">3</span> of <span class="font-medium text-slate-300">12</span> results</p>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 border border-border-dark rounded-lg text-sm font-medium text-text-muted bg-surface-dark hover:text-slate-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled="">Previous</button>
+<button class="px-3 py-1.5 border border-border-dark rounded-lg text-sm font-medium text-slate-300 bg-surface-dark hover:bg-surface-darker transition-colors">Next</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

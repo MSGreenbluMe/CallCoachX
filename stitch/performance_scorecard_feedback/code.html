@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Performance Scorecard &amp; Feedback - CallCoach</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display flex flex-col min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden" style="--checkbox-tick-svg: url('data:image/svg+xml,%3csvg viewBox=%270 0 16 16%27 fill=%27rgb(255,255,255)%27 xmlns=%27http://www.w3.org/2000/svg%27%3e%3cpath d=%27M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z%27/%3e%3c/svg%3e');">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 px-10 py-3 bg-white dark:bg-background-dark sticky top-0 z-10">
+<div class="flex items-center gap-4 text-primary">
+<span class="material-symbols-outlined text-2xl">headset_mic</span>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">CallCoach</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<nav class="flex items-center gap-9">
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal transition-colors" href="#">Dashboard</a>
+<a class="text-primary text-sm font-medium leading-normal" href="#">Scenarios</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal transition-colors" href="#">History</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal transition-colors" href="#">Settings</a>
+</nav>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 bg-slate-200 dark:bg-slate-700" data-alt="User avatar placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAomJzpkfDFfdyZctNaQhxzfWl7WyGi_gpDcl8TMEltyFP6GBso9sUbjmD1059DCTCkoU8M-ShZ3CrmW-aKJ6JuHLxc0bOUq5t9vMAykuso98eDWKNPXfjuKuzIqntESx2nDpW_3Mo2_t1dwOLkyZ50VFqolUPtKnROWO-52-Vn2BRagwGG11R5MINQO4SYAr2wSJyKEuPd58cxtfIFJSphlhtm67aaFWwnNr_ODMSvlyhy1_uysKBNoiq7oCNiQLyEeaa1vOJvzHc7");'></div>
+</div>
+</header>
+<main class="flex flex-1 flex-col px-4 sm:px-10 py-8 gap-8 max-w-7xl mx-auto w-full">
+<div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+<h1 class="text-slate-900 dark:text-white text-3xl font-bold leading-tight tracking-[-0.015em]">Performance Scorecard</h1>
+<div class="flex items-center gap-3 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 px-4 py-2 rounded-full border border-green-200 dark:border-green-800/30">
+<span class="material-symbols-outlined text-xl">star</span>
+<span class="font-bold">+75 XP</span>
+<span class="text-sm font-medium">Level Up!</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<div class="lg:col-span-1 flex flex-col gap-8">
+<div class="bg-white dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800 p-8 flex flex-col items-center justify-center text-center shadow-sm">
+<h3 class="text-slate-500 dark:text-slate-400 text-sm font-medium uppercase tracking-wider mb-4">Overall Score</h3>
+<div class="relative w-40 h-40 flex items-center justify-center mb-2">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<circle class="text-slate-100 dark:text-slate-700" cx="50" cy="50" fill="none" r="45" stroke="currentColor" stroke-width="10"></circle>
+<circle class="text-green-500" cx="50" cy="50" fill="none" r="45" stroke="currentColor" stroke-dasharray="283" stroke-dashoffset="34" stroke-linecap="round" stroke-width="10"></circle>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center flex-col">
+<span class="text-4xl font-bold text-slate-900 dark:text-white">88%</span>
+</div>
+</div>
+<p class="text-green-600 dark:text-green-400 font-medium">Excellent Performance</p>
+</div>
+<div class="bg-white dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
+<h3 class="text-slate-900 dark:text-white text-lg font-semibold mb-6">Skill Analysis</h3>
+<div class="relative w-full aspect-square flex items-center justify-center">
+<!-- Placeholder for Radar Chart -->
+<div class="absolute inset-0 border-2 border-slate-200 dark:border-slate-700 rounded-full flex items-center justify-center">
+<div class="absolute inset-4 border-2 border-slate-200 dark:border-slate-700 rounded-full"></div>
+<div class="absolute inset-12 border-2 border-slate-200 dark:border-slate-700 rounded-full"></div>
+<div class="absolute inset-20 border-2 border-slate-200 dark:border-slate-700 rounded-full"></div>
+<!-- Axes -->
+<div class="absolute w-full h-px bg-slate-200 dark:border-slate-700"></div>
+<div class="absolute w-full h-px bg-slate-200 dark:border-slate-700 transform rotate-60"></div>
+<div class="absolute w-full h-px bg-slate-200 dark:border-slate-700 transform -rotate-60"></div>
+<!-- Shape (Simulated Data) -->
+<svg class="absolute inset-0 w-full h-full text-primary opacity-50 fill-current" viewbox="0 0 100 100">
+<polygon points="50,10 85,30 80,80 50,90 20,70 15,30"></polygon>
+</svg>
+<!-- Labels -->
+<span class="absolute top-0 text-xs text-slate-500 dark:text-slate-400 font-medium bg-white dark:bg-slate-800 px-1 rounded">Empathy</span>
+<span class="absolute right-0 text-xs text-slate-500 dark:text-slate-400 font-medium bg-white dark:bg-slate-800 px-1 rounded">Resolution</span>
+<span class="absolute bottom-0 text-xs text-slate-500 dark:text-slate-400 font-medium bg-white dark:bg-slate-800 px-1 rounded">Pacing</span>
+<span class="absolute left-0 text-xs text-slate-500 dark:text-slate-400 font-medium bg-white dark:bg-slate-800 px-1 rounded">Clarity</span>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-2 flex flex-col gap-8">
+<div class="bg-white dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="px-6 py-4 border-b border-slate-200 dark:border-slate-800 flex justify-between items-center bg-slate-50/50 dark:bg-slate-800/80">
+<h3 class="text-slate-900 dark:text-white text-lg font-semibold">Checkpoint Checklist</h3>
+<span class="text-sm text-slate-500 dark:text-slate-400">Scenario: Angry Customer - Billing Issue</span>
+</div>
+<div class="divide-y divide-slate-100 dark:divide-slate-800">
+<div class="p-6 flex gap-4">
+<div class="flex-shrink-0 mt-1">
+<span class="material-symbols-outlined text-green-500">check_circle</span>
+</div>
+<div>
+<h4 class="text-slate-900 dark:text-white font-medium mb-1">Standard Greeting &amp; Verification</h4>
+<p class="text-slate-600 dark:text-slate-300 text-sm mb-3">Successfully verified caller identity and account details professionally.</p>
+<div class="bg-slate-50 dark:bg-slate-900/50 p-3 rounded-lg border border-slate-100 dark:border-slate-800 text-sm italic text-slate-500 dark:text-slate-400">
+                                            "Thank you for calling support, this is Alex. Can I please have your account number or phone number associated with the account?"
+                                        </div>
+</div>
+</div>
+<div class="p-6 flex gap-4">
+<div class="flex-shrink-0 mt-1">
+<span class="material-symbols-outlined text-green-500">check_circle</span>
+</div>
+<div>
+<h4 class="text-slate-900 dark:text-white font-medium mb-1">De-escalation &amp; Empathy</h4>
+<p class="text-slate-600 dark:text-slate-300 text-sm mb-3">Acknowledged the customer's frustration effectively.</p>
+<div class="bg-slate-50 dark:bg-slate-900/50 p-3 rounded-lg border border-slate-100 dark:border-slate-800 text-sm italic text-slate-500 dark:text-slate-400">
+                                            "I completely understand why that charge would be frustrating. Let's look into this right away to get it resolved for you."
+                                        </div>
+</div>
+</div>
+<div class="p-6 flex gap-4">
+<div class="flex-shrink-0 mt-1">
+<span class="material-symbols-outlined text-red-500">cancel</span>
+</div>
+<div>
+<h4 class="text-slate-900 dark:text-white font-medium mb-1">Clear Resolution Steps</h4>
+<p class="text-slate-600 dark:text-slate-300 text-sm mb-3">Failed to clearly outline the timeline for the refund process.</p>
+<div class="bg-slate-50 dark:bg-slate-900/50 p-3 rounded-lg border border-slate-100 dark:border-slate-800 text-sm italic text-slate-500 dark:text-slate-400">
+                                            "I'll go ahead and reverse that charge now. You should see it soon." <span class="text-red-500 dark:text-red-400 not-italic font-medium ml-2">(Missed mentioning the 3-5 business days processing time)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-white dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
+<h4 class="text-green-600 dark:text-green-400 font-semibold flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined">thumb_up</span> Strengths
+                                </h4>
+<ul class="space-y-3 text-slate-600 dark:text-slate-300 text-sm list-disc list-inside marker:text-green-500">
+<li>Maintained a calm and professional tone throughout the interaction.</li>
+<li>Excellent use of active listening markers ("I see", "Understood").</li>
+<li>Quickly identified the root cause of the billing discrepancy.</li>
+</ul>
+</div>
+<div class="bg-white dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
+<h4 class="text-amber-600 dark:text-amber-400 font-semibold flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined">trending_up</span> Areas for Improvement
+                                </h4>
+<ul class="space-y-3 text-slate-600 dark:text-slate-300 text-sm list-disc list-inside marker:text-amber-500">
+<li>Ensure exact timeframes are communicated for financial transactions.</li>
+<li>Missed opportunity to offer a proactive account review to prevent future issues.</li>
+<li>Closing could be stronger (missed asking "Is there anything else I can help with?").</li>
+</ul>
+</div>
+</div>
+<div class="bg-primary/10 border border-primary/20 rounded-xl p-6 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-6xl">psychology</span>
+</div>
+<h4 class="text-primary font-semibold flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined">lightbulb</span> AI Coaching Tip
+                            </h4>
+<p class="text-slate-700 dark:text-slate-200 text-sm leading-relaxed relative z-10">
+                                When handling refunds, setting clear expectations is crucial to prevent callback volume. Next time, try using the formula: Action taken + Expected timeframe + Confirmation method. Example: "I have processed the refund. You will see it on your statement in 3-5 business days, and I'm sending a confirmation email right now."
+                            </p>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row gap-6 items-center justify-between">
+<div class="bg-white dark:bg-slate-800/80 rounded-full border border-slate-200 dark:border-slate-700 p-2 flex items-center gap-4 w-full md:w-auto shadow-sm">
+<button class="bg-primary hover:bg-blue-600 text-white p-2 rounded-full transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined">play_arrow</span>
+</button>
+<div class="h-1 w-48 md:w-64 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-1/3"></div>
+</div>
+<span class="text-xs font-medium text-slate-500 dark:text-slate-400 mr-2">01:24 / 04:30</span>
+<button class="text-slate-500 hover:text-primary transition-colors pr-3 flex items-center gap-1 text-sm font-medium">
+<span class="material-symbols-outlined text-sm">subject</span> Transcript
+                        </button>
+</div>
+<div class="flex flex-wrap items-center gap-4 w-full md:w-auto justify-end">
+<button class="px-5 py-2.5 rounded-lg font-medium text-sm text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-transparent transition-colors">
+                            Back Home
+                        </button>
+<button class="px-5 py-2.5 rounded-lg font-medium text-sm text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
+                            Try Again
+                        </button>
+<button class="px-5 py-2.5 rounded-lg font-medium text-sm text-white bg-primary hover:bg-blue-600 transition-colors shadow-sm">
+                            Next Scenario
+                        </button>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

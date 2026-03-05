@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html class="dark"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Agent Training Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#137fec",
+            "background-light": "#f6f7f8",
+            "background-dark": "#101922",
+          },
+          fontFamily: {
+            "display": ["Inter"]
+          },
+          borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow">
+<!-- Side Nav -->
+<aside class="w-64 flex-shrink-0 flex flex-col justify-between border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-[#15212c]">
+<div class="flex flex-col gap-4 p-4">
+<div class="flex gap-3 items-center px-2 py-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 bg-primary/20" data-alt="Abstract blue circle logo for CallCoach" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDopKVOmnu0xvWs1z0RY2MZsxD8PiK4jK_RTLiHFJNwAm551ACUkMw7IX2BJtAcXH2sE3vzCAILgQPITLNldaIUwBj5oEs0LxLuSa2QuTerS-J4TpWm0iMktBGlyjVNqW-E-7Cw9gXK3G6n_-L8OsY-NDZX3wn9sVLNYO0pfb6ZdO3sonatAhHyoyC7fltjLDXs7etZZ4R9NN0N0fpwQrPFnF1IQl6DaM3CgWB20nDhVfU4YZBDUbLsr3wbBiSzSwlG47St4-ov83FU");'></div>
+<div class="flex flex-col">
+<h1 class="text-slate-900 dark:text-white text-base font-bold leading-normal">CallCoach</h1>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium leading-normal">Training Simulator</p>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 dark:bg-primary/20 text-primary" href="#">
+<span class="material-symbols-outlined">home</span>
+<p class="text-sm font-medium leading-normal">Home</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300" href="#">
+<span class="material-symbols-outlined">target</span>
+<p class="text-sm font-medium leading-normal">Training Scenarios</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+<p class="text-sm font-medium leading-normal">Analytics</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300" href="#">
+<span class="material-symbols-outlined">emoji_events</span>
+<p class="text-sm font-medium leading-normal">Achievements</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300" href="#">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-sm font-medium leading-normal">Settings</p>
+</a>
+</nav>
+</div>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3 px-2">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-8" data-alt="Profile picture of Michal K." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAy-jFsTc_LhHVwqTNICP82PRoyFfpbaJUNxK6lcZ65ChMG0CHdmp-IJOVSNlJl_f3B13NgyxAleA3nrWZo5O_O2fobZKEC8lJPvkXt70DA2NUNZJtbcESDxooXqNQ8ywStH0-aemQGQ0qbEFR5hoQ7FC49jZsxcnj5VqbG4x-jvIIn65jlgwwWgGu_MfdFmWRe8DBVlKhuIFzUi9eBKzKhbSdfq7kVHOMaIEapn2TQ4H9SyFiK_5S2vSplyECrsb1M7WB6T4spDZmX");'></div>
+<div class="flex flex-col">
+<p class="text-slate-900 dark:text-white text-sm font-medium">Michal K.</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs">Level 12</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col min-w-0">
+<header class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 px-8 py-4 bg-white dark:bg-background-dark/80 backdrop-blur-sm sticky top-0 z-10">
+<div class="flex items-center gap-4">
+<h2 class="text-slate-900 dark:text-white text-xl font-bold leading-tight">Agent Dashboard</h2>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="flex items-center gap-2 rounded-lg h-10 px-6 bg-primary text-white text-sm font-bold shadow-md hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined text-lg">play_arrow</span>
+              Start Training
+            </button>
+</div>
+</header>
+<div class="p-8 max-w-6xl mx-auto w-full flex flex-col gap-8">
+<!-- Welcome & Progress -->
+<section class="flex flex-col md:flex-row gap-6 md:items-end justify-between">
+<div class="flex flex-col gap-2">
+<h1 class="text-slate-900 dark:text-white text-3xl font-bold leading-tight">Welcome back, Michal K.</h1>
+<p class="text-slate-500 dark:text-slate-400">Ready for your next coaching session?</p>
+</div>
+<div class="bg-white dark:bg-[#15212c] rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm md:w-80">
+<div class="flex justify-between items-center mb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">military_tech</span>
+<p class="text-slate-900 dark:text-white font-bold">Level 12</p>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">750/1000 XP</p>
+</div>
+<div class="h-2.5 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
+<div class="h-full rounded-full bg-primary relative" style="width: 75%;">
+<div class="absolute inset-0 bg-white/20 w-full h-full animate-pulse"></div>
+</div>
+</div>
+<p class="text-slate-400 text-xs mt-2 text-right">Next Level: 13</p>
+</div>
+</section>
+<!-- Stats Row -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-[#15212c] border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden">
+<div class="absolute -right-4 -top-4 text-slate-100 dark:text-slate-800/50">
+<span class="material-symbols-outlined" style="font-size: 100px;">history</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium relative z-10">Total Sessions</p>
+<div class="flex items-end gap-3 relative z-10">
+<p class="text-slate-900 dark:text-white text-3xl font-bold">42</p>
+<p class="text-emerald-500 text-sm font-medium flex items-center mb-1"><span class="material-symbols-outlined text-sm">trending_up</span> +2 this week</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-[#15212c] border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden">
+<div class="absolute -right-4 -top-4 text-slate-100 dark:text-slate-800/50">
+<span class="material-symbols-outlined" style="font-size: 100px;">score</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium relative z-10">Avg Score</p>
+<div class="flex items-end gap-3 relative z-10">
+<p class="text-slate-900 dark:text-white text-3xl font-bold">84%</p>
+<p class="text-emerald-500 text-sm font-medium flex items-center mb-1"><span class="material-symbols-outlined text-sm">trending_up</span> +1.5%</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-[#15212c] border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden">
+<div class="absolute -right-4 -top-4 text-slate-100 dark:text-slate-800/50">
+<span class="material-symbols-outlined" style="font-size: 100px;">local_fire_department</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium relative z-10">Current Streak</p>
+<div class="flex items-end gap-3 relative z-10">
+<p class="text-slate-900 dark:text-white text-3xl font-bold">5 Days</p>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Left Column: Recent Sessions & Achievements -->
+<div class="lg:col-span-2 flex flex-col gap-8">
+<!-- Recent Achievements -->
+<section class="flex flex-col gap-4">
+<h3 class="text-slate-900 dark:text-white text-lg font-bold">Recent Achievements</h3>
+<div class="flex gap-4 overflow-x-auto pb-2 -mx-2 px-2 snap-x">
+<div class="min-w-[160px] flex flex-col items-center gap-3 p-4 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/50 rounded-xl snap-start">
+<div class="size-12 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-600 dark:text-amber-400">
+<span class="material-symbols-outlined text-2xl">star</span>
+</div>
+<div class="text-center">
+<p class="text-slate-900 dark:text-white text-sm font-bold">First 100%</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Perfect score</p>
+</div>
+</div>
+<div class="min-w-[160px] flex flex-col items-center gap-3 p-4 bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800/50 rounded-xl snap-start">
+<div class="size-12 rounded-full bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
+<span class="material-symbols-outlined text-2xl">bolt</span>
+</div>
+<div class="text-center">
+<p class="text-slate-900 dark:text-white text-sm font-bold">Fast Learner</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Level 10 in 1 week</p>
+</div>
+</div>
+<div class="min-w-[160px] flex flex-col items-center gap-3 p-4 bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800/50 rounded-xl snap-start">
+<div class="size-12 rounded-full bg-purple-100 dark:bg-purple-900/50 flex items-center justify-center text-purple-600 dark:text-purple-400">
+<span class="material-symbols-outlined text-2xl">favorite</span>
+</div>
+<div class="text-center">
+<p class="text-slate-900 dark:text-white text-sm font-bold">Empathy Pro</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Angry customer handling</p>
+</div>
+</div>
+<div class="min-w-[160px] flex flex-col items-center justify-center gap-2 p-4 border border-dashed border-slate-300 dark:border-slate-700 rounded-xl text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/50 cursor-pointer snap-start transition-colors">
+<span class="material-symbols-outlined">lock</span>
+<p class="text-xs font-medium">View All Badges</p>
+</div>
+</div>
+</section>
+<!-- Recent Sessions Table -->
+<section class="flex flex-col gap-4">
+<div class="flex justify-between items-center">
+<h3 class="text-slate-900 dark:text-white text-lg font-bold">Recent Sessions</h3>
+<a class="text-primary text-sm font-medium hover:underline" href="#">View All</a>
+</div>
+<div class="bg-white dark:bg-[#15212c] rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50">
+<th class="p-4 text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider">Scenario Name</th>
+<th class="p-4 text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider">Date</th>
+<th class="p-4 text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider">Score</th>
+<th class="p-4 text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider">Duration</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/20 transition-colors cursor-pointer">
+<td class="p-4">
+<p class="text-slate-900 dark:text-white text-sm font-medium">Handling Billing Dispute</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs">Customer Success</p>
+</td>
+<td class="p-4 text-slate-600 dark:text-slate-300 text-sm">Today, 10:30 AM</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400">
+                            92%
+                          </span>
+</td>
+<td class="p-4 text-slate-600 dark:text-slate-300 text-sm">4m 12s</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/20 transition-colors cursor-pointer">
+<td class="p-4">
+<p class="text-slate-900 dark:text-white text-sm font-medium">Product Upsell</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs">Sales</p>
+</td>
+<td class="p-4 text-slate-600 dark:text-slate-300 text-sm">Yesterday</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400">
+                            78%
+                          </span>
+</td>
+<td class="p-4 text-slate-600 dark:text-slate-300 text-sm">6m 05s</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/20 transition-colors cursor-pointer">
+<td class="p-4">
+<p class="text-slate-900 dark:text-white text-sm font-medium">Technical Support L1</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs">Support</p>
+</td>
+<td class="p-4 text-slate-600 dark:text-slate-300 text-sm">Oct 24, 2023</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400">
+                            88%
+                          </span>
+</td>
+<td class="p-4 text-slate-600 dark:text-slate-300 text-sm">8m 45s</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/20 transition-colors cursor-pointer">
+<td class="p-4">
+<p class="text-slate-900 dark:text-white text-sm font-medium">New Account Onboarding</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs">Customer Success</p>
+</td>
+<td class="p-4 text-slate-600 dark:text-slate-300 text-sm">Oct 22, 2023</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400">
+                            95%
+                          </span>
+</td>
+<td class="p-4 text-slate-600 dark:text-slate-300 text-sm">12m 30s</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+<!-- Right Column: Active Milestones -->
+<div class="flex flex-col gap-6">
+<section class="bg-white dark:bg-[#15212c] rounded-xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col gap-6">
+<h3 class="text-slate-900 dark:text-white text-lg font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">flag</span>
+                  Active Milestones
+                </h3>
+<div class="flex flex-col gap-4">
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-end">
+<p class="text-slate-900 dark:text-white text-sm font-medium">Complete 5 Sales Scenarios</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs">3/5</p>
+</div>
+<div class="h-2 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
+<div class="h-full rounded-full bg-primary" style="width: 60%;"></div>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-end">
+<p class="text-slate-900 dark:text-white text-sm font-medium">Reach Level 15</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs">Lvl 12</p>
+</div>
+<div class="h-2 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
+<div class="h-full rounded-full bg-purple-500" style="width: 80%;"></div>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-end">
+<p class="text-slate-900 dark:text-white text-sm font-medium">Maintain 90% Avg Score</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs">84%</p>
+</div>
+<div class="h-2 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
+<div class="h-full rounded-full bg-amber-500" style="width: 93%;"></div>
+</div>
+</div>
+</div>
+<button class="w-full mt-2 py-2 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                  View All Goals
+                </button>
+</section>
+<!-- Quick Tip Card -->
+<section class="bg-gradient-to-br from-primary/10 to-transparent dark:from-primary/20 dark:to-transparent rounded-xl p-6 border border-primary/20 dark:border-primary/30 relative overflow-hidden">
+<span class="material-symbols-outlined absolute -bottom-4 -right-4 text-primary/10 dark:text-primary/20" style="font-size: 120px;">lightbulb</span>
+<div class="relative z-10 flex flex-col gap-3">
+<div class="flex items-center gap-2 text-primary font-bold">
+<span class="material-symbols-outlined">tips_and_updates</span>
+                    Pro Tip
+                  </div>
+<p class="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
+                    In your last session, the AI noted a slight rush during the closing. Try pausing for 2 seconds after stating the price to let the customer process.
+                  </p>
+</div>
+</section>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Manager Team Overview Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 overflow-x-hidden min-h-screen flex">
+<!-- Sidebar -->
+<div class="flex flex-col w-64 bg-slate-100 dark:bg-[#15202b] border-r border-slate-200 dark:border-slate-800 h-screen sticky top-0">
+<div class="flex h-full flex-col justify-between p-4">
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-3 px-2">
+<div class="bg-primary/20 bg-cover bg-center rounded-lg size-10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl">headset_mic</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-slate-900 dark:text-white text-base font-bold leading-tight">CallCoach</h1>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-wider">Manager Portal</p>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">group</span>
+<span class="text-sm font-medium">Team</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">school</span>
+<span class="text-sm font-medium">Training</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">bar_chart</span>
+<span class="text-sm font-medium">Reports</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+</div>
+<div class="flex flex-col gap-4">
+<button class="flex items-center justify-center gap-2 rounded-lg h-10 px-4 bg-primary hover:bg-primary/90 text-white text-sm font-semibold transition-colors shadow-sm">
+<span class="material-symbols-outlined text-lg">add</span>
+<span>New Simulation</span>
+</button>
+<div class="flex flex-col gap-1 border-t border-slate-200 dark:border-slate-800 pt-4">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">help</span>
+<span class="text-sm font-medium">Help Center</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">logout</span>
+<span class="text-sm font-medium">Sign Out</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Content -->
+<div class="flex-1 flex flex-col h-screen overflow-y-auto bg-background-light dark:bg-background-dark">
+<div class="max-w-7xl mx-auto w-full p-8 flex flex-col gap-8">
+<!-- Header -->
+<header class="flex flex-wrap items-end justify-between gap-4">
+<div class="flex flex-col gap-1">
+<h2 class="text-slate-900 dark:text-white text-3xl font-bold tracking-tight">Team Overview</h2>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Monitor your team's training progress and performance.</p>
+</div>
+<div class="flex items-center gap-3 bg-white dark:bg-[#1a2634] border border-slate-200 dark:border-slate-700 rounded-lg p-1 shadow-sm">
+<button class="px-4 py-1.5 text-sm font-medium rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">Today</button>
+<button class="px-4 py-1.5 text-sm font-medium rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">7 Days</button>
+<button class="px-4 py-1.5 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white shadow-sm">30 Days</button>
+<button class="px-2 py-1.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 border-l border-slate-200 dark:border-slate-700 ml-1 pl-3 flex items-center">
+<span class="material-symbols-outlined text-xl">calendar_month</span>
+</button>
+</div>
+</header>
+<!-- Stats Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="bg-white dark:bg-[#1a2634] border border-slate-200 dark:border-slate-800 rounded-xl p-5 shadow-sm flex flex-col gap-3">
+<div class="flex items-center justify-between text-slate-500 dark:text-slate-400">
+<span class="text-sm font-medium">Total Agents</span>
+<span class="material-symbols-outlined text-lg">groups</span>
+</div>
+<div class="flex items-end justify-between">
+<p class="text-slate-900 dark:text-white text-3xl font-bold">15</p>
+<p class="text-emerald-500 dark:text-emerald-400 text-sm font-medium flex items-center bg-emerald-50 dark:bg-emerald-500/10 px-2 py-0.5 rounded text-xs">
+<span class="material-symbols-outlined text-sm mr-0.5">trending_up</span>+2
+                        </p>
+</div>
+</div>
+<div class="bg-white dark:bg-[#1a2634] border border-slate-200 dark:border-slate-800 rounded-xl p-5 shadow-sm flex flex-col gap-3">
+<div class="flex items-center justify-between text-slate-500 dark:text-slate-400">
+<span class="text-sm font-medium">Avg Team Score</span>
+<span class="material-symbols-outlined text-lg">military_tech</span>
+</div>
+<div class="flex items-end justify-between">
+<p class="text-slate-900 dark:text-white text-3xl font-bold">78%</p>
+<p class="text-emerald-500 dark:text-emerald-400 text-sm font-medium flex items-center bg-emerald-50 dark:bg-emerald-500/10 px-2 py-0.5 rounded text-xs">
+<span class="material-symbols-outlined text-sm mr-0.5">trending_up</span>+4%
+                        </p>
+</div>
+</div>
+<div class="bg-white dark:bg-[#1a2634] border border-slate-200 dark:border-slate-800 rounded-xl p-5 shadow-sm flex flex-col gap-3">
+<div class="flex items-center justify-between text-slate-500 dark:text-slate-400">
+<span class="text-sm font-medium">Sessions This Week</span>
+<span class="material-symbols-outlined text-lg">record_voice_over</span>
+</div>
+<div class="flex items-end justify-between">
+<p class="text-slate-900 dark:text-white text-3xl font-bold">124</p>
+<p class="text-rose-500 dark:text-rose-400 text-sm font-medium flex items-center bg-rose-50 dark:bg-rose-500/10 px-2 py-0.5 rounded text-xs">
+<span class="material-symbols-outlined text-sm mr-0.5">trending_down</span>-12
+                        </p>
+</div>
+</div>
+<div class="bg-white dark:bg-[#1a2634] border border-slate-200 dark:border-slate-800 rounded-xl p-5 shadow-sm flex flex-col gap-3">
+<div class="flex items-center justify-between text-slate-500 dark:text-slate-400">
+<span class="text-sm font-medium">Active Today</span>
+<span class="material-symbols-outlined text-lg">local_fire_department</span>
+</div>
+<div class="flex items-end justify-between">
+<p class="text-slate-900 dark:text-white text-3xl font-bold">8</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium flex items-center bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded text-xs">
+<span class="material-symbols-outlined text-sm mr-0.5">horizontal_rule</span>0
+                        </p>
+</div>
+</div>
+</div>
+<!-- Charts & Tables Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Main Trend Chart -->
+<div class="lg:col-span-2 bg-white dark:bg-[#1a2634] border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm flex flex-col">
+<div class="p-5 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center">
+<div>
+<h3 class="text-slate-900 dark:text-white font-semibold">Average Team Score Trend</h3>
+<p class="text-slate-500 dark:text-slate-400 text-xs mt-0.5">Last 30 Days</p>
+</div>
+<div class="flex gap-2">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+                                Score
+                            </span>
+</div>
+</div>
+<div class="p-5 flex-1 flex flex-col justify-end min-h-[300px] relative">
+<!-- Abstract Chart Representation -->
+<div class="absolute inset-x-5 top-5 bottom-12 border-l border-b border-slate-200 dark:border-slate-700 flex flex-col justify-between text-xs text-slate-400 pb-2">
+<div class="flex items-center gap-2 -ml-8 w-full"><span class="w-6 text-right">100</span><div class="h-px bg-slate-100 dark:bg-slate-800 flex-1"></div></div>
+<div class="flex items-center gap-2 -ml-8 w-full"><span class="w-6 text-right">80</span><div class="h-px bg-slate-100 dark:bg-slate-800 flex-1"></div></div>
+<div class="flex items-center gap-2 -ml-8 w-full"><span class="w-6 text-right">60</span><div class="h-px bg-slate-100 dark:bg-slate-800 flex-1"></div></div>
+<div class="flex items-center gap-2 -ml-8 w-full"><span class="w-6 text-right">40</span><div class="h-px bg-slate-100 dark:bg-slate-800 flex-1"></div></div>
+</div>
+<svg class="w-full h-full relative z-10" preserveaspectratio="none" viewbox="0 0 100 100">
+<!-- Gradient Fill -->
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#137fec" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#137fec" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0,100 L0,60 C10,50 20,70 30,55 C40,40 50,60 60,45 C70,30 80,40 90,20 L100,25 L100,100 Z" fill="url(#chartGradient)"></path>
+<!-- Line -->
+<path d="M0,60 C10,50 20,70 30,55 C40,40 50,60 60,45 C70,30 80,40 90,20 L100,25" fill="none" stroke="#137fec" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<!-- Points -->
+<circle cx="30" cy="55" fill="#fff" r="2" stroke="#137fec" stroke-width="1.5"></circle>
+<circle cx="60" cy="45" fill="#fff" r="2" stroke="#137fec" stroke-width="1.5"></circle>
+<circle cx="90" cy="20" fill="#fff" r="2" stroke="#137fec" stroke-width="1.5"></circle>
+</svg>
+<div class="flex justify-between mt-4 text-xs text-slate-500 dark:text-slate-400 px-2 pl-6">
+<span>Week 1</span>
+<span>Week 2</span>
+<span>Week 3</span>
+<span>Week 4</span>
+</div>
+</div>
+</div>
+<!-- Leaderboard -->
+<div class="bg-white dark:bg-[#1a2634] border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm flex flex-col">
+<div class="p-5 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center">
+<h3 class="text-slate-900 dark:text-white font-semibold">Top Performers</h3>
+<button class="text-primary text-xs font-medium hover:underline">View All</button>
+</div>
+<div class="p-2 flex-1 overflow-auto">
+<table class="w-full text-left text-sm">
+<thead class="text-xs text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-800/50">
+<tr>
+<th class="px-3 py-2 font-medium rounded-l-lg">Agent</th>
+<th class="px-3 py-2 font-medium">Level</th>
+<th class="px-3 py-2 font-medium text-right rounded-r-lg">Score</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-3 py-3">
+<div class="flex items-center gap-2">
+<div class="size-8 rounded-full bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-xs">SJ</div>
+<span class="font-medium text-slate-900 dark:text-slate-200">Sarah J.</span>
+</div>
+</td>
+<td class="px-3 py-3 text-slate-500 dark:text-slate-400">Senior</td>
+<td class="px-3 py-3 text-right font-semibold text-emerald-600 dark:text-emerald-400">94%</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-3 py-3">
+<div class="flex items-center gap-2">
+<div class="size-8 rounded-full bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold text-xs">MR</div>
+<span class="font-medium text-slate-900 dark:text-slate-200">Mike R.</span>
+</div>
+</td>
+<td class="px-3 py-3 text-slate-500 dark:text-slate-400">Mid</td>
+<td class="px-3 py-3 text-right font-semibold text-emerald-600 dark:text-emerald-400">91%</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-3 py-3">
+<div class="flex items-center gap-2">
+<div class="size-8 rounded-full bg-purple-100 dark:bg-purple-900/50 text-purple-600 dark:text-purple-400 flex items-center justify-center font-bold text-xs">AL</div>
+<span class="font-medium text-slate-900 dark:text-slate-200">Amanda L.</span>
+</div>
+</td>
+<td class="px-3 py-3 text-slate-500 dark:text-slate-400">Senior</td>
+<td class="px-3 py-3 text-right font-semibold text-emerald-600 dark:text-emerald-400">88%</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-3 py-3">
+<div class="flex items-center gap-2">
+<div class="size-8 rounded-full bg-amber-100 dark:bg-amber-900/50 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold text-xs">DT</div>
+<span class="font-medium text-slate-900 dark:text-slate-200">David T.</span>
+</div>
+</td>
+<td class="px-3 py-3 text-slate-500 dark:text-slate-400">Junior</td>
+<td class="px-3 py-3 text-right font-semibold text-slate-700 dark:text-slate-300">85%</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-3 py-3">
+<div class="flex items-center gap-2">
+<div class="size-8 rounded-full bg-rose-100 dark:bg-rose-900/50 text-rose-600 dark:text-rose-400 flex items-center justify-center font-bold text-xs">EK</div>
+<span class="font-medium text-slate-900 dark:text-slate-200">Elena K.</span>
+</div>
+</td>
+<td class="px-3 py-3 text-slate-500 dark:text-slate-400">Mid</td>
+<td class="px-3 py-3 text-right font-semibold text-slate-700 dark:text-slate-300">82%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Skill Gap Heatmap -->
+<div class="bg-white dark:bg-[#1a2634] border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm overflow-hidden flex flex-col">
+<div class="p-5 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center">
+<div>
+<h3 class="text-slate-900 dark:text-white font-semibold">Skill Gap Analysis</h3>
+<p class="text-slate-500 dark:text-slate-400 text-xs mt-0.5">Performance across key quality criteria</p>
+</div>
+<div class="flex items-center gap-4 text-xs">
+<div class="flex items-center gap-1"><div class="size-3 rounded-sm bg-rose-500"></div><span class="text-slate-500 dark:text-slate-400">Needs Work</span></div>
+<div class="flex items-center gap-1"><div class="size-3 rounded-sm bg-amber-400"></div><span class="text-slate-500 dark:text-slate-400">Average</span></div>
+<div class="flex items-center gap-1"><div class="size-3 rounded-sm bg-emerald-500"></div><span class="text-slate-500 dark:text-slate-400">Excellent</span></div>
+</div>
+</div>
+<div class="p-5 overflow-x-auto">
+<div class="min-w-[700px]">
+<div class="grid grid-cols-[120px_repeat(5,1fr)] gap-2 mb-2 text-sm font-medium text-slate-500 dark:text-slate-400 text-center">
+<div class="text-left">Criteria</div>
+<div>Sarah J.</div>
+<div>Mike R.</div>
+<div>Amanda L.</div>
+<div>David T.</div>
+<div>Elena K.</div>
+</div>
+<div class="flex flex-col gap-2">
+<!-- Empathy Row -->
+<div class="grid grid-cols-[120px_repeat(5,1fr)] gap-2 items-center">
+<div class="text-sm font-medium text-slate-700 dark:text-slate-300 truncate pr-2">Empathy</div>
+<div class="h-10 rounded bg-emerald-500/90 flex items-center justify-center text-white text-xs font-bold">96</div>
+<div class="h-10 rounded bg-emerald-400/80 flex items-center justify-center text-slate-800 text-xs font-bold">88</div>
+<div class="h-10 rounded bg-emerald-500 flex items-center justify-center text-white text-xs font-bold">92</div>
+<div class="h-10 rounded bg-amber-400/80 flex items-center justify-center text-slate-800 text-xs font-bold">75</div>
+<div class="h-10 rounded bg-rose-400/80 flex items-center justify-center text-white text-xs font-bold">62</div>
+</div>
+<!-- Clarity Row -->
+<div class="grid grid-cols-[120px_repeat(5,1fr)] gap-2 items-center">
+<div class="text-sm font-medium text-slate-700 dark:text-slate-300 truncate pr-2">Clarity</div>
+<div class="h-10 rounded bg-emerald-500 flex items-center justify-center text-white text-xs font-bold">94</div>
+<div class="h-10 rounded bg-emerald-500/90 flex items-center justify-center text-white text-xs font-bold">95</div>
+<div class="h-10 rounded bg-amber-400/90 flex items-center justify-center text-slate-800 text-xs font-bold">78</div>
+<div class="h-10 rounded bg-emerald-400/80 flex items-center justify-center text-slate-800 text-xs font-bold">85</div>
+<div class="h-10 rounded bg-emerald-500/80 flex items-center justify-center text-white text-xs font-bold">90</div>
+</div>
+<!-- Resolution Row -->
+<div class="grid grid-cols-[120px_repeat(5,1fr)] gap-2 items-center">
+<div class="text-sm font-medium text-slate-700 dark:text-slate-300 truncate pr-2">Resolution</div>
+<div class="h-10 rounded bg-emerald-500/80 flex items-center justify-center text-white text-xs font-bold">90</div>
+<div class="h-10 rounded bg-emerald-400/80 flex items-center justify-center text-slate-800 text-xs font-bold">86</div>
+<div class="h-10 rounded bg-emerald-500/90 flex items-center justify-center text-white text-xs font-bold">95</div>
+<div class="h-10 rounded bg-amber-300/80 flex items-center justify-center text-slate-800 text-xs font-bold">72</div>
+<div class="h-10 rounded bg-amber-400/90 flex items-center justify-center text-slate-800 text-xs font-bold">79</div>
+</div>
+<!-- Compliance Row -->
+<div class="grid grid-cols-[120px_repeat(5,1fr)] gap-2 items-center">
+<div class="text-sm font-medium text-slate-700 dark:text-slate-300 truncate pr-2">Compliance</div>
+<div class="h-10 rounded bg-emerald-500/90 flex items-center justify-center text-white text-xs font-bold">98</div>
+<div class="h-10 rounded bg-emerald-500/90 flex items-center justify-center text-white text-xs font-bold">97</div>
+<div class="h-10 rounded bg-emerald-500/80 flex items-center justify-center text-white text-xs font-bold">90</div>
+<div class="h-10 rounded bg-emerald-500 flex items-center justify-center text-white text-xs font-bold">100</div>
+<div class="h-10 rounded bg-emerald-400/80 flex items-center justify-center text-slate-800 text-xs font-bold">88</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

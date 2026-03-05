@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Agent Achievements Gallery</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen antialiased">
+<div class="relative flex h-screen w-full flex-col overflow-hidden">
+<div class="flex h-full grow flex-col sm:flex-row">
+<!-- Sidebar -->
+<div class="flex w-full sm:w-64 flex-col justify-between bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 p-4 shrink-0 sm:h-full overflow-y-auto">
+<div class="flex flex-col gap-4">
+<div class="flex gap-3 items-center px-2 py-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 shrink-0 border border-slate-200 dark:border-slate-700" data-alt="Profile picture of a professional user" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBrDzTl7p0bqottG5FDstOHrBCrH3fSFduDO82eOWCt_2YTROFeSkCvY_mhKZ41mU-AGqRvjzz_dlGbFV5R8gpb_JXnBS1092LrW3vh5PDsVQFBRiwNmfl-cLILnLwtJ1Rber1TvhllwRsuqNZUa0MDQQn76HG5xjIKzEbcP75DsT34LVeXVOmYtvHjAPo695a3Z4EfpFZkv2CzVJQn9-PDXwRIViA3b9AFMYdeBtLg5_gc6x9uWnu2KHsF8SC7BdAnUmBLr07JIRUh");'></div>
+<div class="flex flex-col overflow-hidden">
+<h1 class="text-slate-900 dark:text-white text-base font-medium leading-normal truncate">CallCoach</h1>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal truncate">Training Simulator</p>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group text-slate-700 dark:text-slate-300" href="#">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400 group-hover:text-primary transition-colors">dashboard</span>
+<span class="text-sm font-medium leading-normal">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group text-slate-700 dark:text-slate-300" href="#">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400 group-hover:text-primary transition-colors">call</span>
+<span class="text-sm font-medium leading-normal">Scenarios</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary transition-colors group" href="#">
+<span class="material-symbols-outlined text-primary">emoji_events</span>
+<span class="text-sm font-medium leading-normal">Achievements</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group text-slate-700 dark:text-slate-300" href="#">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400 group-hover:text-primary transition-colors">trending_up</span>
+<span class="text-sm font-medium leading-normal">Performance</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group text-slate-700 dark:text-slate-300" href="#">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400 group-hover:text-primary transition-colors">settings</span>
+<span class="text-sm font-medium leading-normal">Settings</span>
+</a>
+</nav>
+</div>
+<div class="mt-8">
+<div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800 flex flex-col gap-3">
+<p class="text-sm font-medium text-slate-900 dark:text-white">Daily Streak</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-orange-500 text-xl">local_fire_department</span>
+<span class="text-lg font-bold text-slate-900 dark:text-white">5 Days</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Content -->
+<div class="flex-1 overflow-y-auto">
+<div class="max-w-6xl mx-auto p-6 sm:p-8 flex flex-col gap-8">
+<!-- Header -->
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
+<div class="flex flex-col gap-2">
+<h1 class="text-3xl sm:text-4xl font-bold leading-tight text-slate-900 dark:text-white">Your Achievements</h1>
+<p class="text-slate-500 dark:text-slate-400 text-base font-medium">32/50 Badges Earned • 12,400 Total XP</p>
+</div>
+<div class="flex gap-2">
+<div class="h-2 w-32 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden self-end mb-2">
+<div class="h-full bg-primary rounded-full" style="width: 64%"></div>
+</div>
+</div>
+</div>
+<!-- Filter Bar -->
+<div class="flex overflow-x-auto pb-1 border-b border-slate-200 dark:border-slate-800 gap-6 no-scrollbar">
+<button class="flex flex-col items-center justify-center border-b-2 border-primary text-primary pb-3 pt-2 shrink-0 px-2 font-semibold">
+                            All
+                        </button>
+<button class="flex flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 hover:border-slate-300 dark:hover:border-slate-600 transition-colors pb-3 pt-2 shrink-0 px-2 font-medium">
+                            Earned
+                        </button>
+<button class="flex flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 hover:border-slate-300 dark:hover:border-slate-600 transition-colors pb-3 pt-2 shrink-0 px-2 font-medium">
+                            Locked
+                        </button>
+<button class="flex flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 hover:border-slate-300 dark:hover:border-slate-600 transition-colors pb-3 pt-2 shrink-0 px-2 font-medium">
+                            In Progress
+                        </button>
+</div>
+<!-- Categories -->
+<div class="flex flex-col gap-10">
+<!-- Milestones Section -->
+<section class="flex flex-col gap-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white">Milestones</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Earned Badge -->
+<div class="group relative flex flex-col gap-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="absolute top-3 right-3 text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded-full">+500 XP</div>
+<div class="flex justify-center items-center py-4">
+<div class="w-20 h-20 rounded-full bg-gradient-to-br from-amber-300 to-orange-500 flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-white text-4xl">star</span>
+</div>
+</div>
+<div class="flex flex-col items-center text-center gap-1">
+<h3 class="text-slate-900 dark:text-white text-base font-bold">100 Calls Completed</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400">Unlocked on Oct 12, 2023</p>
+</div>
+</div>
+<!-- Earned Badge -->
+<div class="group relative flex flex-col gap-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="absolute top-3 right-3 text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded-full">+750 XP</div>
+<div class="flex justify-center items-center py-4">
+<div class="w-20 h-20 rounded-full bg-gradient-to-br from-purple-400 to-indigo-600 flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-white text-4xl">mood_bad</span>
+</div>
+</div>
+<div class="flex flex-col items-center text-center gap-1">
+<h3 class="text-slate-900 dark:text-white text-base font-bold">First Irate Customer</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400">Unlocked on Oct 15, 2023</p>
+</div>
+</div>
+<!-- In Progress Badge -->
+<div class="group relative flex flex-col gap-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="absolute top-3 right-3 text-xs font-bold text-slate-400 dark:text-slate-500 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-full">1000 XP</div>
+<div class="flex justify-center items-center py-4">
+<div class="w-20 h-20 rounded-full bg-slate-100 dark:bg-slate-800 border-2 border-dashed border-slate-300 dark:border-slate-600 flex items-center justify-center overflow-hidden relative">
+<div class="absolute bottom-0 left-0 right-0 bg-blue-400/30" style="height: 70%"></div>
+<span class="material-symbols-outlined text-blue-500 text-4xl relative z-10">diamond</span>
+</div>
+</div>
+<div class="flex flex-col items-center text-center gap-2 w-full">
+<h3 class="text-slate-900 dark:text-white text-base font-bold">Top Rating</h3>
+<div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-1.5 mt-1">
+<div class="bg-blue-500 h-1.5 rounded-full" style="width: 70%"></div>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400">7/10 5-star ratings</p>
+</div>
+</div>
+<!-- Locked Badge -->
+<div class="group relative flex flex-col gap-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 p-5 shadow-sm hover:shadow-md transition-all cursor-pointer opacity-70 hover:opacity-100">
+<div class="absolute top-3 right-3 text-xs font-bold text-slate-400 dark:text-slate-500 bg-slate-200 dark:bg-slate-800 px-2 py-1 rounded-full">1500 XP</div>
+<div class="flex justify-center items-center py-4 relative">
+<div class="w-20 h-20 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center filter grayscale">
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-500 text-4xl">favorite</span>
+</div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="bg-slate-900/80 dark:bg-slate-900/90 rounded-full p-2">
+<span class="material-symbols-outlined text-white text-sm">lock</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-center text-center gap-1">
+<h3 class="text-slate-600 dark:text-slate-300 text-base font-bold">Perfect Empathy</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-1 line-clamp-2">Achieve 95%+ empathy score on 20 calls</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Skill Mastery Section -->
+<section class="flex flex-col gap-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white">Skill Mastery</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Earned Badge -->
+<div class="group relative flex flex-col gap-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="absolute top-3 right-3 text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded-full">+400 XP</div>
+<div class="flex justify-center items-center py-4">
+<div class="w-20 h-20 rounded-full bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-white text-4xl">check_circle</span>
+</div>
+</div>
+<div class="flex flex-col items-center text-center gap-1">
+<h3 class="text-slate-900 dark:text-white text-base font-bold">First Call Resolution</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400">Unlocked on Oct 05, 2023</p>
+</div>
+</div>
+<!-- Earned Badge -->
+<div class="group relative flex flex-col gap-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="absolute top-3 right-3 text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded-full">+600 XP</div>
+<div class="flex justify-center items-center py-4">
+<div class="w-20 h-20 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-white text-4xl">timer</span>
+</div>
+</div>
+<div class="flex flex-col items-center text-center gap-1">
+<h3 class="text-slate-900 dark:text-white text-base font-bold">Speedy Solver</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400">Unlocked on Nov 02, 2023</p>
+</div>
+</div>
+<!-- Locked Badge -->
+<div class="group relative flex flex-col gap-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 p-5 shadow-sm hover:shadow-md transition-all cursor-pointer opacity-70 hover:opacity-100">
+<div class="absolute top-3 right-3 text-xs font-bold text-slate-400 dark:text-slate-500 bg-slate-200 dark:bg-slate-800 px-2 py-1 rounded-full">800 XP</div>
+<div class="flex justify-center items-center py-4 relative">
+<div class="w-20 h-20 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center filter grayscale">
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-500 text-4xl">psychology</span>
+</div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="bg-slate-900/80 dark:bg-slate-900/90 rounded-full p-2">
+<span class="material-symbols-outlined text-white text-sm">lock</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-center text-center gap-1">
+<h3 class="text-slate-600 dark:text-slate-300 text-base font-bold">De-escalation Master</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-1 line-clamp-2">Successfully resolve 5 level-3 escalations</p>
+</div>
+</div>
+<!-- Locked Badge -->
+<div class="group relative flex flex-col gap-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 p-5 shadow-sm hover:shadow-md transition-all cursor-pointer opacity-70 hover:opacity-100">
+<div class="absolute top-3 right-3 text-xs font-bold text-slate-400 dark:text-slate-500 bg-slate-200 dark:bg-slate-800 px-2 py-1 rounded-full">1200 XP</div>
+<div class="flex justify-center items-center py-4 relative">
+<div class="w-20 h-20 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center filter grayscale">
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-500 text-4xl">translate</span>
+</div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="bg-slate-900/80 dark:bg-slate-900/90 rounded-full p-2">
+<span class="material-symbols-outlined text-white text-sm">lock</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-center text-center gap-1">
+<h3 class="text-slate-600 dark:text-slate-300 text-base font-bold">Polyglot</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-1 line-clamp-2">Complete scenarios in 3 different languages</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

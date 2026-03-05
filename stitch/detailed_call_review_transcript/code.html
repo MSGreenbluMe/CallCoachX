@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Call Review &amp; Transcript</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13a4ec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101c22",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen">
+<div class="flex h-screen w-full">
+<!-- Sidebar -->
+<div class="flex w-64 flex-col justify-between bg-slate-100 dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 shrink-0 h-full overflow-y-auto">
+<div class="flex flex-col gap-4 p-4">
+<div class="flex gap-3 items-center">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="CallCoach Logo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAm9I2BT3FmZJqsy2Tp8gcrh4SIrm3GT7gpJJtnxBSA553GqSe1EyB9e_OEWp3r1aY00CChm3hcRHstEMqa8Tuqw-BRHsOpv97smCE25s3qe7KL-fF_BrGxSgNW4nkbR7v62hGJ5T28zzuyGFlO0PhTY6ejNOPIwRhWDkEkSoNHBNI5IXLVq1jipzgfbD5bbQaT6R1ZHCJxT5BXZnAXvN0McF-QlggKFZfuyRkzHdXf1-8IFceSbHKLHlzx-QxouZKrGLLicVNl2bqq");'></div>
+<div class="flex flex-col">
+<h1 class="text-slate-900 dark:text-slate-100 text-base font-medium leading-normal">CallCoach</h1>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">Training Simulator</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 mt-4">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-slate-700 dark:text-slate-300">dashboard</span>
+<p class="text-slate-700 dark:text-slate-300 text-sm font-medium leading-normal">Dashboard</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-slate-700 dark:text-slate-300">call</span>
+<p class="text-slate-700 dark:text-slate-300 text-sm font-medium leading-normal">Scenarios</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 dark:bg-primary/20" href="#">
+<span class="material-symbols-outlined text-primary">history</span>
+<p class="text-primary text-sm font-medium leading-normal">History</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-slate-700 dark:text-slate-300">analytics</span>
+<p class="text-slate-700 dark:text-slate-300 text-sm font-medium leading-normal">Analytics</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-slate-700 dark:text-slate-300">settings</span>
+<p class="text-slate-700 dark:text-slate-300 text-sm font-medium leading-normal">Settings</p>
+</a>
+</div>
+</div>
+</div>
+<!-- Main Content -->
+<div class="flex flex-1 flex-col h-full overflow-y-auto">
+<!-- Header -->
+<div class="flex flex-col gap-4 p-8 border-b border-slate-200 dark:border-slate-800">
+<div class="flex flex-wrap gap-2 text-sm">
+<a class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors font-medium" href="#">History</a>
+<span class="text-slate-500 dark:text-slate-400">/</span>
+<span class="text-slate-900 dark:text-slate-100 font-medium">Session #1284</span>
+</div>
+<div class="flex flex-wrap justify-between items-end gap-4">
+<div class="flex flex-col gap-2">
+<h1 class="text-slate-900 dark:text-slate-100 text-3xl font-bold leading-tight">The Disgruntled Refund Request</h1>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Oct 24, 2023 • <span class="text-green-600 dark:text-green-400 font-medium">Score: 88%</span></p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center justify-center rounded-lg h-10 px-4 bg-slate-200 dark:bg-slate-800 text-slate-900 dark:text-slate-100 hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors text-sm font-medium">
+                            Share with Manager
+                        </button>
+<button class="flex items-center justify-center rounded-lg h-10 px-4 bg-primary text-white hover:bg-primary/90 transition-colors text-sm font-medium">
+                            Re-run Scenario
+                        </button>
+</div>
+</div>
+</div>
+<!-- Two Column Layout -->
+<div class="flex flex-1 gap-8 p-8 overflow-hidden">
+<!-- Left Column (Audio & Evaluation) -->
+<div class="flex flex-col gap-6 w-1/3 overflow-y-auto pr-2">
+<!-- Audio Player -->
+<div class="flex flex-col gap-4 rounded-xl bg-slate-100 dark:bg-slate-900 p-5 border border-slate-200 dark:border-slate-800">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400">graphic_eq</span>
+<div>
+<h3 class="text-sm font-bold text-slate-900 dark:text-slate-100">Session Audio</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400">Agent &amp; Customer</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<select class="bg-transparent text-xs text-slate-500 dark:text-slate-400 border-none outline-none cursor-pointer">
+<option value="1">1x</option>
+<option value="1.5">1.5x</option>
+<option value="2">2x</option>
+</select>
+</div>
+</div>
+<!-- Pseudo Waveform -->
+<div class="flex items-center gap-1 h-8 px-2 overflow-hidden">
+<div class="w-1 bg-primary rounded-full h-2"></div>
+<div class="w-1 bg-primary rounded-full h-4"></div>
+<div class="w-1 bg-primary rounded-full h-6"></div>
+<div class="w-1 bg-primary rounded-full h-3"></div>
+<div class="w-1 bg-primary rounded-full h-5"></div>
+<div class="w-1 bg-primary rounded-full h-8"></div>
+<div class="w-1 bg-primary rounded-full h-4"></div>
+<div class="w-1 bg-primary rounded-full h-2"></div>
+<div class="w-1 bg-slate-300 dark:bg-slate-700 rounded-full h-5"></div>
+<div class="w-1 bg-slate-300 dark:bg-slate-700 rounded-full h-3"></div>
+<div class="w-1 bg-slate-300 dark:bg-slate-700 rounded-full h-6"></div>
+<div class="w-1 bg-slate-300 dark:bg-slate-700 rounded-full h-4"></div>
+<div class="w-1 bg-slate-300 dark:bg-slate-700 rounded-full h-2"></div>
+</div>
+<div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+<span>1:17</span>
+<span>2:23</span>
+</div>
+<div class="flex items-center justify-center gap-4 mt-2">
+<button class="text-slate-500 hover:text-primary transition-colors"><span class="material-symbols-outlined">replay_10</span></button>
+<button class="flex items-center justify-center rounded-full size-12 bg-primary text-white hover:bg-primary/90 transition-colors shadow-lg">
+<span class="material-symbols-outlined" style="font-size: 28px;">play_arrow</span>
+</button>
+<button class="text-slate-500 hover:text-primary transition-colors"><span class="material-symbols-outlined">forward_10</span></button>
+</div>
+</div>
+<!-- Evaluation Summary -->
+<div class="flex flex-col gap-4 rounded-xl bg-slate-100 dark:bg-slate-900 p-5 border border-slate-200 dark:border-slate-800">
+<h3 class="text-sm font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">psychology</span>
+                            AI Evaluation Summary
+                        </h3>
+<p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                            Great job identifying the customer's frustration early on. You handled the refund request professionally and maintained a calm tone throughout the interaction.
+                        </p>
+<div class="mt-2 space-y-3">
+<div>
+<h4 class="text-xs font-bold text-green-600 dark:text-green-400 uppercase tracking-wider mb-1">Strengths</h4>
+<ul class="text-sm text-slate-600 dark:text-slate-300 list-disc pl-4 space-y-1">
+<li>Active listening demonstrated in first response.</li>
+<li>Empathy shown when acknowledging the inconvenience.</li>
+</ul>
+</div>
+<div>
+<h4 class="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider mb-1">Areas for Improvement</h4>
+<ul class="text-sm text-slate-600 dark:text-slate-300 list-disc pl-4 space-y-1">
+<li>Could have offered a clearer timeline for the refund processing.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column (Interactive Transcript) -->
+<div class="flex flex-col w-2/3 h-full rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="p-4 border-b border-slate-200 dark:border-slate-800 bg-slate-100/50 dark:bg-slate-900/80 flex justify-between items-center">
+<h3 class="text-sm font-bold text-slate-900 dark:text-slate-100">Full Transcript</h3>
+<div class="flex gap-2 text-xs">
+<span class="flex items-center gap-1 text-slate-500"><span class="w-2 h-2 rounded-full bg-green-500"></span> Positive</span>
+<span class="flex items-center gap-1 text-slate-500"><span class="w-2 h-2 rounded-full bg-amber-500"></span> Missed Opportunity</span>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto p-6 space-y-6">
+<!-- Agent Message -->
+<div class="flex gap-4">
+<div class="size-8 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-sm">support_agent</span>
+</div>
+<div class="flex flex-col gap-1 max-w-[80%]">
+<div class="flex items-center gap-2">
+<span class="text-xs font-medium text-slate-700 dark:text-slate-300">Agent</span>
+<span class="text-xs text-slate-500">0:00</span>
+</div>
+<div class="p-3 rounded-2xl rounded-tl-none bg-slate-200 dark:bg-slate-800 text-sm text-slate-800 dark:text-slate-200">
+                                    Thank you for calling Acme Corp support, this is Alex. How can I help you today?
+                                </div>
+</div>
+</div>
+<!-- Customer Message -->
+<div class="flex gap-4 flex-row-reverse">
+<div class="size-8 rounded-full bg-slate-300 dark:bg-slate-700 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400 text-sm">person</span>
+</div>
+<div class="flex flex-col gap-1 max-w-[80%] items-end">
+<div class="flex items-center gap-2">
+<span class="text-xs text-slate-500">0:05</span>
+<span class="text-xs font-medium text-slate-700 dark:text-slate-300">Customer</span>
+</div>
+<div class="p-3 rounded-2xl rounded-tr-none bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-sm text-slate-800 dark:text-slate-200">
+                                    Yes, hi. I ordered a blender last week and it arrived completely shattered. I need a refund right now.
+                                </div>
+</div>
+</div>
+<!-- Agent Message with Highlight & Checkpoint -->
+<div class="flex gap-4 relative">
+<div class="absolute -left-2 top-8 -translate-x-full">
+<div class="flex items-center gap-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-2 py-1 rounded text-[10px] font-bold whitespace-nowrap" title="Issue Identified">
+<span class="material-symbols-outlined text-[12px]">check_circle</span>
+                                    Checkpoint
+                                </div>
+</div>
+<div class="size-8 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-sm">support_agent</span>
+</div>
+<div class="flex flex-col gap-1 max-w-[80%]">
+<div class="flex items-center gap-2">
+<span class="text-xs font-medium text-slate-700 dark:text-slate-300">Agent</span>
+<span class="text-xs text-slate-500">0:12</span>
+</div>
+<div class="p-3 rounded-2xl rounded-tl-none bg-slate-200 dark:bg-slate-800 text-sm text-slate-800 dark:text-slate-200">
+<span class="bg-green-200 dark:bg-green-900/50 px-1 rounded">I am so sorry to hear that your blender arrived damaged, that must be incredibly frustrating.</span> I can certainly help you with a refund for that. Could I please get your order number?
+                                </div>
+</div>
+</div>
+<!-- Customer Message -->
+<div class="flex gap-4 flex-row-reverse">
+<div class="size-8 rounded-full bg-slate-300 dark:bg-slate-700 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400 text-sm">person</span>
+</div>
+<div class="flex flex-col gap-1 max-w-[80%] items-end">
+<div class="flex items-center gap-2">
+<span class="text-xs text-slate-500">0:25</span>
+<span class="text-xs font-medium text-slate-700 dark:text-slate-300">Customer</span>
+</div>
+<div class="p-3 rounded-2xl rounded-tr-none bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-sm text-slate-800 dark:text-slate-200">
+                                    It's 987654321.
+                                </div>
+</div>
+</div>
+<!-- Agent Message with Missed Opportunity -->
+<div class="flex gap-4">
+<div class="size-8 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-sm">support_agent</span>
+</div>
+<div class="flex flex-col gap-1 max-w-[80%]">
+<div class="flex items-center gap-2">
+<span class="text-xs font-medium text-slate-700 dark:text-slate-300">Agent</span>
+<span class="text-xs text-slate-500">0:28</span>
+</div>
+<div class="p-3 rounded-2xl rounded-tl-none bg-slate-200 dark:bg-slate-800 text-sm text-slate-800 dark:text-slate-200">
+                                    Thank you. Okay, I've processed the refund for you. Have a good day.
+                                    <div class="mt-2 text-[11px] text-amber-600 dark:text-amber-400 flex items-start gap-1 bg-amber-50 dark:bg-amber-900/20 p-2 rounded">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+<span>Missed opportunity: You should specify how many days it will take for the refund to appear on their statement.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

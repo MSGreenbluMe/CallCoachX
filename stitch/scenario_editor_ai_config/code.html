@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Scenario Editor AI Config</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- TopNavBar component style adapted -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 px-10 py-3 bg-white dark:bg-[#15212d]">
+<div class="flex items-center gap-4 text-slate-900 dark:text-white">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M24 45.8096C19.6865 45.8096 15.4698 44.5305 11.8832 42.134C8.29667 39.7376 5.50128 36.3314 3.85056 32.3462C2.19985 28.361 1.76794 23.9758 2.60947 19.7452C3.451 15.5145 5.52816 11.6284 8.57829 8.5783C11.6284 5.52817 15.5145 3.45101 19.7452 2.60948C23.9758 1.76795 28.361 2.19986 32.3462 3.85057C36.3314 5.50129 39.7376 8.29668 42.134 11.8833C44.5305 15.4698 45.8096 19.6865 45.8096 24L24 24L24 45.8096Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">CallCoach</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User profile avatar placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuARkd6B4ajoNzKDSDicAZLZ6zRuoAnzlCxfT1WKfbCMpMwA2qBvJNfOM-RI1AbW13WemfAmrCVSRH7VfIx56zdHdP0vrIe6YCdaLSqNrSG8iXCQQuO4oDprfAk7o4zuWTG6yfq2LzTRbthfy38guK0ssuHtB1dk-JtFotCeBqLGmGZtYZREaYnA62L9IWmaMkFUUwmrAnRalNKmA_RG5OWmkF6D2_PUjQI7mCnjwWNlJAOubN9CQmXfjgU-T4vPpciQOWxBWbzV1DqN");'></div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-64 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-[#15212d] p-6 flex flex-col gap-6 hidden md:flex">
+<div>
+<h3 class="text-sm font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-4">Scenario Preview</h3>
+<div class="space-y-4">
+<div>
+<p class="text-xs text-slate-500 dark:text-slate-400">Name</p>
+<p class="font-medium">Angry Customer Returns</p>
+</div>
+<div>
+<p class="text-xs text-slate-500 dark:text-slate-400">Difficulty</p>
+<div class="inline-flex items-center gap-1 mt-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300">
+                            Hard
+                        </div>
+</div>
+<div>
+<p class="text-xs text-slate-500 dark:text-slate-400">Duration</p>
+<p class="font-medium">5-7 mins</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto p-8 max-w-5xl mx-auto w-full">
+<!-- Progress Bar -->
+<div class="mb-8">
+<div class="flex justify-between items-center mb-2">
+<p class="text-sm font-medium">Step 4: AI Configuration</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">4 of 6</p>
+</div>
+<div class="w-full bg-slate-200 dark:bg-slate-800 rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 66.66%"></div>
+</div>
+<div class="flex justify-between text-xs text-slate-500 dark:text-slate-400 mt-2 px-1">
+<span>Basics</span>
+<span>Persona</span>
+<span>Rules</span>
+<span class="text-primary font-medium">AI Config</span>
+<span>Evaluation</span>
+<span>Review</span>
+</div>
+</div>
+<!-- Header -->
+<div class="mb-8">
+<h1 class="text-3xl font-bold tracking-tight mb-2">Scenario Editor: AI Configuration</h1>
+<p class="text-slate-600 dark:text-slate-400">Configure the AI voice and knowledge base for the training scenario.</p>
+</div>
+<!-- Form -->
+<div class="space-y-8 bg-white dark:bg-[#15212d] p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<!-- Voice Settings -->
+<section>
+<h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">record_voice_over</span>
+                        Voice Settings
+                    </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="col-span-1 md:col-span-2">
+<label class="block text-sm font-medium mb-2">Select Voice (ElevenLabs)</label>
+<select class="w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-sm focus:border-primary focus:ring-primary h-12">
+<option value="bella">Bella - Friendly &amp; Professional</option>
+<option value="josh">Josh - Calm &amp; Authoritative</option>
+<option selected="" value="rachel">Rachel - Angry Customer</option>
+<option value="domi">Domi - Nervous &amp; Fast</option>
+</select>
+</div>
+<div>
+<div class="flex justify-between mb-1">
+<label class="text-sm font-medium">Stability</label>
+<span class="text-xs text-slate-500 dark:text-slate-400">30%</span>
+</div>
+<input class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-primary" max="100" min="0" type="range" value="30"/>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Lower values allow more emotion and variation.</p>
+</div>
+<div>
+<div class="flex justify-between mb-1">
+<label class="text-sm font-medium">Exaggeration (Style)</label>
+<span class="text-xs text-slate-500 dark:text-slate-400">75%</span>
+</div>
+<input class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-primary" max="100" min="0" type="range" value="75"/>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Higher values increase the selected style's intensity.</p>
+</div>
+</div>
+</section>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<!-- Conversation Starters -->
+<section>
+<h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">chat</span>
+                        Initial Greeting
+                    </h2>
+<label class="block text-sm font-medium mb-2">What does the AI say first when the call connects?</label>
+<textarea class="w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-sm focus:border-primary focus:ring-primary" rows="3">Hello? Is this customer service? I've been on hold for 20 minutes and I'm furious about my recent order.</textarea>
+</section>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<!-- Knowledge Base -->
+<section>
+<h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">database</span>
+                        Knowledge Base
+                    </h2>
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Upload documents (PDF, DOCX, TXT) that the AI should use as reference material for this scenario (e.g., return policies, product specs).</p>
+<div class="mt-2 flex justify-center rounded-xl border border-dashed border-slate-300 dark:border-slate-600 px-6 py-10 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors cursor-pointer">
+<div class="text-center">
+<span class="material-symbols-outlined text-4xl text-slate-400 mb-2">cloud_upload</span>
+<div class="mt-4 flex text-sm leading-6 text-slate-600 dark:text-slate-400 justify-center">
+<label class="relative cursor-pointer rounded-md font-semibold text-primary focus-within:outline-none focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 hover:text-primary/80" for="file-upload">
+<span>Upload a file</span>
+<input class="sr-only" id="file-upload" name="file-upload" type="file"/>
+</label>
+<p class="pl-1">or drag and drop</p>
+</div>
+<p class="text-xs leading-5 text-slate-500 dark:text-slate-500">PDF, DOCX up to 10MB</p>
+</div>
+</div>
+<!-- Uploaded files list mock -->
+<ul class="mt-4 space-y-2">
+<li class="flex items-center justify-between p-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-red-500">picture_as_pdf</span>
+<div>
+<p class="text-sm font-medium">Return_Policy_2023.pdf</p>
+<p class="text-xs text-slate-500">1.2 MB</p>
+</div>
+</div>
+<button class="text-slate-400 hover:text-red-500">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</li>
+</ul>
+</section>
+</div>
+<!-- Footer Actions -->
+<div class="mt-8 flex items-center justify-between">
+<button class="px-6 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 font-medium transition-colors">
+                    Back
+                </button>
+<div class="flex gap-4">
+<button class="px-6 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-colors">
+                        Save Draft
+                    </button>
+<button class="px-6 py-2.5 rounded-lg bg-primary text-white hover:bg-primary/90 font-medium transition-colors flex items-center gap-2">
+                        Next: Evaluation Config
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</main>
+</div>
+</body></html>

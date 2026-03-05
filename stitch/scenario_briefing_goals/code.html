@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CallCoach - Pre-Call Briefing</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#137fec",
+              "background-light": "#f6f7f8",
+              "background-dark": "#101922",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display overflow-x-hidden min-h-screen flex flex-col">
+<div class="flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 px-10 py-4 bg-white dark:bg-background-dark sticky top-0 z-10">
+<div class="flex items-center gap-4 text-primary">
+<span class="material-symbols-outlined text-2xl">support_agent</span>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">CallCoach</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<nav class="flex items-center gap-9">
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Dashboard</a>
+<a class="text-primary font-bold text-sm leading-normal" href="#">Scenarios</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Reports</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Settings</a>
+</nav>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border border-slate-200 dark:border-slate-700" data-alt="User Avatar Placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuABWiQoK_B-N7CbnJXPpgf4ar1L7EZhtKxL7KSRJcLy_kkA7v6uzIm5RXsEAOCRaIBRL8JLb7gGBgyP3HuyJOQeAV7naDJNhKlapplUnIWYgDe-Aj_OQz1nwZyv40T5Q6309WCWIfypiam5YDxCXyT_Ab0VOoFg3BJvKbuAEFUPwwiyOP7ogwDjKTjL-oXENEav4k66iQC9z96kLIXHhuWYbKsczz2VSEYKCv6Cl88NNMQ7XKFqxGSJTjogzQjtjdBKE2T3LtjsxwuK");'></div>
+</div>
+</header>
+<main class="flex-1 max-w-[1200px] w-full mx-auto px-6 py-8 flex flex-col gap-8">
+<section class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white dark:bg-slate-900/50 p-6 rounded-xl border border-slate-200 dark:border-slate-800">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-3">
+<span class="px-3 py-1 bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider rounded-full">Technical Support</span>
+</div>
+<h1 class="text-slate-900 dark:text-white text-3xl md:text-4xl font-black leading-tight tracking-[-0.033em]">The Disgruntled Refund Request</h1>
+</div>
+<div class="flex items-center gap-2 bg-slate-100 dark:bg-slate-800 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700">
+<span class="text-slate-500 dark:text-slate-400 text-sm font-medium">Difficulty:</span>
+<div class="flex items-center text-amber-500">
+<span class="material-symbols-outlined text-base">star</span>
+<span class="material-symbols-outlined text-base">star</span>
+<span class="material-symbols-outlined text-base">star</span>
+<span class="material-symbols-outlined text-base text-slate-300 dark:text-slate-600">star</span>
+<span class="material-symbols-outlined text-base text-slate-300 dark:text-slate-600">star</span>
+</div>
+<span class="text-slate-700 dark:text-slate-300 text-sm font-bold ml-1">3/5</span>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 flex-1">
+<div class="flex flex-col gap-8">
+<div class="bg-white dark:bg-slate-900/50 p-6 rounded-xl border border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary">info</span>
+<h2 class="text-slate-900 dark:text-white text-xl font-bold leading-tight">Context</h2>
+</div>
+<p class="text-slate-600 dark:text-slate-300 text-base leading-relaxed mb-4">
+                            Customer has been billed twice for their monthly subscription and is highly frustrated. This is their third attempt to resolve the issue, as previous tickets were closed without resolution.
+                        </p>
+<p class="text-slate-600 dark:text-slate-300 text-base leading-relaxed">
+                            They are demanding an immediate refund and threatening to cancel their account and leave negative reviews on social media if not resolved on this call.
+                        </p>
+</div>
+<div class="bg-white dark:bg-slate-900/50 p-6 rounded-xl border border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary">person</span>
+<h3 class="text-slate-900 dark:text-white text-xl font-bold leading-tight">Your Customer</h3>
+</div>
+<div class="flex items-center gap-4">
+<div class="size-16 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-2xl font-bold text-slate-500 dark:text-slate-400 border-2 border-primary/20">
+                                JN
+                            </div>
+<div>
+<h4 class="text-lg font-bold text-slate-900 dark:text-white">Ján Novák</h4>
+<div class="flex items-center gap-2 mt-1">
+<span class="material-symbols-outlined text-sm text-green-500">verified_user</span>
+<span class="text-sm text-slate-500 dark:text-slate-400">Returning Customer (3+ years)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-8">
+<div class="bg-white dark:bg-slate-900/50 p-6 rounded-xl border border-slate-200 dark:border-slate-800 border-l-4 border-l-primary">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary">flag</span>
+<h2 class="text-slate-900 dark:text-white text-xl font-bold leading-tight">Your Goal</h2>
+</div>
+<p class="text-slate-700 dark:text-slate-200 text-lg font-medium">
+                            De-escalate the situation, apologize for the repeated error, and successfully process a valid refund for the duplicate charge without losing the customer.
+                        </p>
+</div>
+<div class="bg-white dark:bg-slate-900/50 p-6 rounded-xl border border-slate-200 dark:border-slate-800 flex-1">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-primary">fact_check</span>
+<h2 class="text-slate-900 dark:text-white text-xl font-bold leading-tight">Checkpoints</h2>
+</div>
+<ul class="flex flex-col gap-4">
+<li class="flex items-start gap-3">
+<div class="mt-0.5 size-5 rounded border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-800 flex items-center justify-center"></div>
+<span class="text-slate-700 dark:text-slate-300 font-medium">Standard Greeting &amp; Verification</span>
+</li>
+<li class="flex items-start gap-3">
+<div class="mt-0.5 size-5 rounded border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-800 flex items-center justify-center"></div>
+<span class="text-slate-700 dark:text-slate-300 font-medium">Empathize with the frustration and apologize for the previous failures</span>
+</li>
+<li class="flex items-start gap-3">
+<div class="mt-0.5 size-5 rounded border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-800 flex items-center justify-center"></div>
+<span class="text-slate-700 dark:text-slate-300 font-medium">Confirm account details and locate the duplicate charge</span>
+</li>
+<li class="flex items-start gap-3">
+<div class="mt-0.5 size-5 rounded border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-800 flex items-center justify-center"></div>
+<span class="text-slate-700 dark:text-slate-300 font-medium">Explain the refund process clearly and provide a timeline</span>
+</li>
+<li class="flex items-start gap-3">
+<div class="mt-0.5 size-5 rounded border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-800 flex items-center justify-center"></div>
+<span class="text-slate-700 dark:text-slate-300 font-medium">Confirm customer satisfaction before closing the call</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</main>
+<footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark py-4 px-6 md:px-10 mt-auto sticky bottom-0 z-10 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
+<div class="max-w-[1200px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-sm">
+<span class="material-symbols-outlined text-lg">mic</span>
+<p>Note: This call will be recorded and evaluated by AI.</p>
+</div>
+<button class="w-full sm:w-auto flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-bold transition-colors shadow-lg shadow-green-600/20">
+<span class="material-symbols-outlined">call</span>
+                    Start Training Call
+                </button>
+</div>
+</footer>
+</div>
+</body></html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Call Evaluation Progress Screen</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13a4ec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101c22",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow">
+<!-- Side Navigation -->
+<div class="flex h-full min-h-screen w-64 flex-col justify-between bg-white dark:bg-[#15242b] border-r border-slate-200 dark:border-slate-800 p-4 shrink-0 opacity-70 transition-opacity hover:opacity-100">
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-3 px-2">
+<div class="bg-primary/20 bg-center bg-no-repeat aspect-square bg-cover rounded-xl size-10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">record_voice_over</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-slate-900 dark:text-white text-lg font-semibold leading-tight">CallCoach</h1>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-wider">Simulator</p>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">headset_mic</span>
+<span class="text-sm font-medium">Training</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary font-medium" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-sm font-medium">Evaluations</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+</div>
+<div class="flex flex-col gap-4 mt-8">
+<div class="flex items-center gap-3 px-3 py-2">
+<div class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-700 bg-cover bg-center" data-alt="User profile avatar image" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBmP6JihbmQLDaE324q6tRWV0CdSaWlgYILklId_rdj7xNKWcpG76TRYAlrQIW2TPRUPxxo6i3Sp5RVia3SL5JFJtTqO2U9pGT9IDokzZyiV8dU_9bm8i34NQrz0OrBm2Hdd53bKxD3o1mazO96gXRMInHAIpTZZ1bpSVHPUozKbCzJIGBuclHiDejPYC3I90Q5R18EGA3tc2wwlEfaTXyn3vsvfJrqKP1wvaGFTsmW-0J_TM-DI8zChiXth6vpA9koUzCIkJXwEl8X");'></div>
+<div class="flex flex-col">
+<span class="text-sm font-medium text-slate-900 dark:text-white">Alex Operator</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">Trainee Level 2</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Content Area -->
+<div class="flex flex-1 flex-col items-center justify-center p-8 lg:p-12 relative overflow-hidden">
+<!-- Subtle Background Elements -->
+<div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+<div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl mix-blend-screen"></div>
+<div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl mix-blend-screen"></div>
+</div>
+<div class="flex flex-col w-full max-w-3xl gap-12 items-center">
+<!-- Header -->
+<div class="text-center flex flex-col items-center gap-2">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium text-slate-600 dark:text-slate-300 mb-4">
+<span class="material-symbols-outlined text-[16px] text-primary">auto_awesome</span>
+                            Powered by Gemini
+                        </div>
+<h1 class="text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white tracking-tight">Evaluating your call...</h1>
+<p class="text-slate-500 dark:text-slate-400">Our AI is analyzing your performance metrics.</p>
+</div>
+<!-- Progress Indicator -->
+<div class="relative w-48 h-48 flex items-center justify-center my-4">
+<svg class="w-full h-full -rotate-90" viewbox="0 0 100 100">
+<!-- Background circle -->
+<circle class="text-slate-200 dark:text-slate-800" cx="50" cy="50" fill="none" r="45" stroke="currentColor" stroke-width="4"></circle>
+<!-- Progress circle -->
+<circle class="text-primary" cx="50" cy="50" fill="none" r="45" stroke="currentColor" stroke-dasharray="283" stroke-dashoffset="113" stroke-linecap="round" stroke-width="4"></circle>
+</svg>
+<div class="absolute flex flex-col items-center justify-center">
+<span class="text-4xl font-bold text-slate-900 dark:text-white">60%</span>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">Complete</span>
+</div>
+</div>
+<!-- Detailed Progress Steps -->
+<div class="w-full bg-white dark:bg-[#15242b] rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-sm font-semibold text-slate-900 dark:text-white uppercase tracking-wider">Analysis Status</h2>
+<span class="text-xs font-medium px-2.5 py-1 rounded-full bg-primary/10 text-primary">Step 3 of 4</span>
+</div>
+<div class="space-y-6">
+<!-- Step 1: Complete -->
+<div class="flex items-start gap-4">
+<div class="flex flex-col items-center gap-2 mt-1">
+<div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-500 flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<div class="w-[2px] h-8 bg-emerald-500/20"></div>
+</div>
+<div>
+<p class="text-sm font-semibold text-slate-900 dark:text-white">Transcribing Audio</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Converted 4m 12s of audio to text.</p>
+</div>
+</div>
+<!-- Step 2: Complete -->
+<div class="flex items-start gap-4">
+<div class="flex flex-col items-center gap-2 mt-1">
+<div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-500 flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<div class="w-[2px] h-8 bg-emerald-500/20"></div>
+</div>
+<div>
+<p class="text-sm font-semibold text-slate-900 dark:text-white">Analyzing Tone</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Evaluating empathy and clarity levels.</p>
+</div>
+</div>
+<!-- Step 3: In Progress -->
+<div class="flex items-start gap-4">
+<div class="flex flex-col items-center gap-2 mt-1">
+<div class="w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center shadow-[0_0_10px_rgba(19,164,236,0.5)]">
+<span class="material-symbols-outlined text-[14px] animate-spin">sync</span>
+</div>
+<div class="w-[2px] h-8 bg-slate-200 dark:bg-slate-800"></div>
+</div>
+<div class="w-full">
+<div class="flex justify-between items-center mb-1">
+<p class="text-sm font-semibold text-primary">Checking Objectives</p>
+<p class="text-xs font-medium text-primary">65%</p>
+</div>
+<div class="w-full h-1.5 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden">
+<div class="h-full bg-primary rounded-full transition-all duration-500" style="width: 65%;"></div>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5">Verifying script adherence and objection handling.</p>
+</div>
+</div>
+<!-- Step 4: Pending -->
+<div class="flex items-start gap-4">
+<div class="flex flex-col items-center gap-2 mt-1">
+<div class="w-6 h-6 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-slate-300 dark:bg-slate-600"></div>
+</div>
+</div>
+<div>
+<p class="text-sm font-medium text-slate-500 dark:text-slate-500">Generating Feedback</p>
+<p class="text-xs text-slate-400 dark:text-slate-600 mt-0.5">Waiting for previous steps to complete...</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Coaching Tip Box -->
+<div class="w-full bg-gradient-to-r from-primary/10 to-blue-500/10 dark:from-primary/20 dark:to-blue-500/20 rounded-2xl border border-primary/20 p-5 flex items-start gap-4">
+<div class="p-2 bg-white dark:bg-[#15242b] rounded-lg text-primary shadow-sm shrink-0">
+<span class="material-symbols-outlined">lightbulb</span>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="text-sm font-bold text-slate-900 dark:text-white">Pro Tip</h3>
+<p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">Using the customer's name twice during a call can increase perceived rapport by up to 15%. Keep it natural!</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>
