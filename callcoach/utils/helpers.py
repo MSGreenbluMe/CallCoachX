@@ -606,6 +606,85 @@ def inject_custom_css():
         border-radius: 8px !important;
     }}
 
+    /* Selectbox — container, value, input */
+    div[data-baseweb="select"] {{
+        background: var(--bg-input) !important;
+        color: var(--text) !important;
+    }}
+    div[data-baseweb="select"] > div {{
+        background-color: var(--bg-input) !important;
+        border-color: var(--border) !important;
+        color: var(--text) !important;
+    }}
+    div[data-baseweb="select"] span,
+    div[data-baseweb="select"] div[data-baseweb="select-value"] {{
+        color: var(--text) !important;
+    }}
+    div[data-baseweb="select"] input {{
+        color: var(--text) !important;
+    }}
+    div[data-baseweb="select"] svg {{
+        fill: var(--text-secondary) !important;
+    }}
+
+    /* Selectbox — dropdown popover / menu */
+    div[data-baseweb="popover"] {{
+        background-color: var(--bg-card) !important;
+        border: 1px solid var(--border) !important;
+        border-radius: 8px !important;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.3) !important;
+    }}
+    div[data-baseweb="popover"] > div {{
+        background-color: var(--bg-card) !important;
+    }}
+    ul[data-baseweb="menu"] {{
+        background-color: var(--bg-card) !important;
+    }}
+    ul[data-baseweb="menu"] li {{
+        background-color: var(--bg-card) !important;
+        color: var(--text) !important;
+    }}
+    ul[data-baseweb="menu"] li:hover,
+    ul[data-baseweb="menu"] li[aria-selected="true"] {{
+        background-color: var(--bg-hover) !important;
+    }}
+    ul[data-baseweb="menu"] li[aria-selected="true"] {{
+        background-color: var(--primary-10) !important;
+        color: var(--primary) !important;
+    }}
+
+    /* Multiselect tags */
+    span[data-baseweb="tag"] {{
+        background-color: var(--primary-10) !important;
+        color: var(--primary) !important;
+    }}
+
+    /* BaseWeb input override (covers all BaseWeb-based inputs) */
+    div[data-baseweb="input"] {{
+        background-color: var(--bg-input) !important;
+        border-color: var(--border) !important;
+    }}
+    div[data-baseweb="input"] input {{
+        color: var(--text) !important;
+        -webkit-text-fill-color: var(--text) !important;
+    }}
+    div[data-baseweb="base-input"] {{
+        background-color: var(--bg-input) !important;
+    }}
+    div[data-baseweb="textarea"] textarea {{
+        background-color: var(--bg-input) !important;
+        color: var(--text) !important;
+    }}
+
+    /* Label text for all form widgets */
+    .stSelectbox label,
+    .stTextInput label,
+    .stTextArea label,
+    .stRadio label,
+    .stCheckbox label {{
+        color: var(--text) !important;
+    }}
+
     /* Dividers */
     hr {{
         border-color: var(--border) !important;
@@ -622,11 +701,6 @@ def inject_custom_css():
     /* Plotly chart bg */
     .js-plotly-plot .plotly .bg {{
         fill: var(--bg-card) !important;
-    }}
-
-    /* Selectbox */
-    div[data-baseweb="select"] {{
-        background: var(--bg-input) !important;
     }}
 
     /* Tab overrides */
