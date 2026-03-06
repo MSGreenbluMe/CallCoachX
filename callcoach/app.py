@@ -59,16 +59,8 @@ def render_sidebar():
 
         for page_key, icon, label in nav_items:
             is_active = st.session_state.get("page") == page_key
-            active_css = "background:var(--primary-10);color:var(--primary);" if is_active else "color:var(--text-secondary);"
-
-            st.markdown(f"""
-            <div style="display:flex;align-items:center;gap:12px;padding:8px 12px;border-radius:8px;margin-bottom:4px;cursor:pointer;{active_css}">
-                <span class="material-symbols-outlined" style="font-size:20px;">{icon}</span>
-                <span style="font-size:0.9em;font-weight:500;">{label}</span>
-            </div>
-            """, unsafe_allow_html=True)
-
-            if st.button(label, key=f"nav_{page_key}", label_visibility="collapsed", use_container_width=True):
+            prefix = "● " if is_active else "   "
+            if st.button(f"{prefix}{label}", key=f"nav_{page_key}", use_container_width=True):
                 st.session_state["page"] = page_key
                 st.rerun()
 
