@@ -29,13 +29,13 @@ LEVEL_THRESHOLDS = {
 }
 
 LEVEL_NAMES = {
-    1: "Nováčik",
+    1: "Nováček",
     2: "Kadet",
     3: "Junior Agent",
     4: "Agent",
     5: "Senior Agent",
     6: "Expert",
-    7: "Master",
+    7: "Mistr",
     8: "Guru",
     9: "Legenda",
     10: "Call Center Jedi",
@@ -57,19 +57,19 @@ XP_DAILY_STREAK = 20
 
 # Categories
 CATEGORIES = {
-    "SALES": {"label": "Predaj", "color": "#10b981", "icon": "trending_up"},
-    "RETENTION": {"label": "Retencia", "color": "#8b5cf6", "icon": "loyalty"},
+    "SALES": {"label": "Prodej", "color": "#10b981", "icon": "trending_up"},
+    "RETENTION": {"label": "Retence", "color": "#8b5cf6", "icon": "loyalty"},
     "TECH_SUPPORT": {"label": "Tech Support", "color": "#3b82f6", "icon": "support_agent"},
-    "COMPLAINTS": {"label": "Reklamácie", "color": "#ef4444", "icon": "sentiment_dissatisfied"},
-    "BILLING": {"label": "Fakturácia", "color": "#f59e0b", "icon": "receipt_long"},
+    "COMPLAINTS": {"label": "Reklamace", "color": "#ef4444", "icon": "sentiment_dissatisfied"},
+    "BILLING": {"label": "Fakturace", "color": "#f59e0b", "icon": "receipt_long"},
     "ONBOARDING": {"label": "Onboarding", "color": "#06b6d4", "icon": "person_add"},
 }
 
 MOODS = {
-    "CALM": {"label": "Pokojný", "icon": "😊"},
+    "CALM": {"label": "Klidný", "icon": "😊"},
     "FRUSTRATED": {"label": "Frustrovaný", "icon": "😤"},
-    "ANGRY": {"label": "Nahnevaný", "icon": "😡"},
-    "CONFUSED": {"label": "Zmätený", "icon": "😕"},
-    "IMPATIENT": {"label": "Netrpezlivý", "icon": "⏰"},
-    "FRIENDLY": {"label": "Priateľský", "icon": "😄"},
+    "ANGRY": {"label": "Rozzlobený", "icon": "😡"},
+    "CONFUSED": {"label": "Zmatený", "icon": "😕"},
+    "IMPATIENT": {"label": "Netrpělivý", "icon": "⏰"},
+    "FRIENDLY": {"label": "Přátelský", "icon": "😄"},
 }

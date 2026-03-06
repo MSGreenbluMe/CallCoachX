@@ -2,31 +2,28 @@ import streamlit as st
 import sys
 import os
 
-# Add project root to path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from database.db import init_db
 from database.seed import run_all_seeds
 from utils.helpers import inject_custom_css
 
-# Page config
 st.set_page_config(
-    page_title="CallCoach — AI Tréningový Simulátor",
+    page_title="CallCoach — AI Trenažér hovorů",
     page_icon="🎯",
     layout="wide",
     initial_sidebar_state="expanded",
 )
 
-# Initialize database
 init_db()
 run_all_seeds()
 
-# Inject custom CSS
-inject_custom_css()
-
-# Initialize session state
 if "page" not in st.session_state:
     st.session_state["page"] = "login"
+if "dark_mode" not in st.session_state:
+    st.session_state["dark_mode"] = True
+
+inject_custom_css()
 
 
 def render_sidebar():
@@ -35,72 +32,76 @@ def render_sidebar():
         return
 
     with st.sidebar:
-        st.markdown(f"""
-        <div style="text-align:center;padding:16px 0;">
-            <span class="material-symbols-outlined" style="font-size:36px;color:#137fec;">headset_mic</span>
-            <h3 style="color:#137fec;margin:4px 0;">CallCoach</h3>
-            <p style="color:#6b7280;font-size:0.8em;margin:0;">Tréningový simulátor</p>
+        # Logo
+        st.markdown("""
+        <div style="display:flex;align-items:center;gap:12px;padding:16px 8px 20px;">
+            <span class="material-symbols-outlined" style="font-size:28px;color:var(--primary);">headset_mic</span>
+            <div>
+                <div style="font-weight:700;font-size:1em;color:var(--text);">CallCoach</div>
+                <div style="font-size:0.75em;color:var(--text-secondary);">Trenažér hovorů</div>
+            </div>
         </div>
         """, unsafe_allow_html=True)
-
-        st.divider()
 
         role = user.get("role", "agent")
 
         if role == "agent":
             nav_items = [
-                ("agent_home", "home", "Dashboard"),
-                ("scenario_browser", "school", "Scenáre"),
-                ("achievements", "emoji_events", "Achievementy"),
+                ("agent_home", "home", "Domů"),
+                ("scenario_browser", "target", "Tréninkové scénáře"),
+                ("achievements", "emoji_events", "Úspěchy"),
             ]
         else:
             nav_items = [
-                ("manager_dashboard", "dashboard", "Dashboard tímu"),
-                ("scenario_browser", "school", "Scenáre"),
+                ("manager_dashboard", "dashboard", "Přehled týmu"),
+                ("scenario_browser", "target", "Scénáře"),
             ]
 
         for page_key, icon, label in nav_items:
             is_active = st.session_state.get("page") == page_key
-            if st.button(
-                f"{'→ ' if is_active else '   '}{label}",
-                key=f"nav_{page_key}",
-                use_container_width=True,
-            ):
+            active_css = "background:var(--primary-10);color:var(--primary);" if is_active else "color:var(--text-secondary);"
+
+            st.markdown(f"""
+            <div style="display:flex;align-items:center;gap:12px;padding:8px 12px;border-radius:8px;margin-bottom:4px;cursor:pointer;{active_css}">
+                <span class="material-symbols-outlined" style="font-size:20px;">{icon}</span>
+                <span style="font-size:0.9em;font-weight:500;">{label}</span>
+            </div>
+            """, unsafe_allow_html=True)
+
+            if st.button(label, key=f"nav_{page_key}", label_visibility="collapsed", use_container_width=True):
                 st.session_state["page"] = page_key
                 st.rerun()
+
+        st.markdown("<div style='flex:1;'></div>", unsafe_allow_html=True)
+
+        # Dark/Light toggle
+        st.divider()
+        mode_icon = "light_mode" if st.session_state.get("dark_mode") else "dark_mode"
+        mode_label = "Světlý režim" if st.session_state.get("dark_mode") else "Tmavý režim"
+        if st.button(f"{'☀️' if st.session_state.get('dark_mode') else '🌙'} {mode_label}", key="toggle_mode", use_container_width=True):
+            st.session_state["dark_mode"] = not st.session_state.get("dark_mode", True)
+            st.rerun()
 
         st.divider()
 
         # User info
         from config import LEVEL_NAMES
-        level_name = LEVEL_NAMES.get(user.get("level", 1), "")
+        level = user.get("level", 1)
+        level_name = LEVEL_NAMES.get(level, "")
 
         st.markdown(f"""
-        <div style="padding:8px 0;">
-            <div style="display:flex;align-items:center;gap:10px;">
-                <div style="width:36px;height:36px;background:#137fec;border-radius:50%;
-                            display:flex;align-items:center;justify-content:center;
-                            color:white;font-weight:700;">{user.get('name', 'U')[0]}</div>
-                <div>
-                    <div style="font-weight:600;font-size:0.9em;color:#1e293b;">{user.get('name', '')}</div>
-                    <div style="font-size:0.75em;color:#6b7280;">Level {user.get('level', 1)} — {level_name}</div>
-                </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:8px;">
+            <div style="width:36px;height:36px;background:linear-gradient(135deg,var(--primary),#3b82f6);
+                        border-radius:50%;display:flex;align-items:center;justify-content:center;
+                        color:white;font-weight:700;font-size:0.9em;">{user.get('name', 'U')[0]}</div>
+            <div>
+                <div style="font-weight:600;font-size:0.9em;color:var(--text);">{user.get('name', '')}</div>
+                <div style="font-size:0.75em;color:var(--text-secondary);">Level {level}</div>
             </div>
         </div>
         """, unsafe_allow_html=True)
 
-        if user.get("role") == "agent":
-            streak = user.get("streak_days", 0)
-            if streak > 0:
-                st.markdown(f"""
-                <div style="background:#fef3c7;border-radius:8px;padding:10px;margin-top:12px;text-align:center;">
-                    <span style="font-size:1.2em;">🔥</span>
-                    <span style="font-weight:600;color:#92400e;">{streak} dní streak</span>
-                </div>
-                """, unsafe_allow_html=True)
-
-        st.markdown("<br>", unsafe_allow_html=True)
-        if st.button("Odhlásiť sa", use_container_width=True):
+        if st.button("Odhlásit se", key="logout_btn", use_container_width=True):
             for key in list(st.session_state.keys()):
                 del st.session_state[key]
             st.rerun()
@@ -144,7 +145,7 @@ def main():
         from views.achievements import render
         render()
     else:
-        st.error(f"Neznáma stránka: {page}")
+        st.error(f"Neznámá stránka: {page}")
 
 
 main()

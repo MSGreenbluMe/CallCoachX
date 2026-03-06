@@ -6,14 +6,11 @@ from services.scenario_service import get_scenario, get_scenario_checkpoints
 from services.gemini_service import evaluate_call
 from services.gamification_service import calculate_xp_for_session, award_xp, check_and_award_achievements
 from components.radar_chart import create_radar_chart
-from components.score_card import render_big_score, render_metric_card
-from components.achievement_badge import render_achievement_popup
 from database.db import query
 from utils.helpers import score_color, goal_badge, format_duration
 
 
 def render_evaluating():
-    """Loading screen while evaluation is happening."""
     session_id = st.session_state.get("completed_session_id")
     if not session_id:
         st.session_state["page"] = "agent_home"
@@ -22,7 +19,7 @@ def render_evaluating():
 
     session = query("SELECT * FROM sessions WHERE id = ?", (session_id,), one=True)
     if not session:
-        st.error("Session nenájdená.")
+        st.error("Relace nenalezena.")
         return
 
     scenario = get_scenario(session["scenario_id"])
@@ -31,28 +28,28 @@ def render_evaluating():
     st.markdown("""
     <div style="text-align:center;margin-top:80px;">
         <div style="margin-bottom:16px;">
-            <span style="background:#e0e7ff;color:#4f46e5;padding:4px 12px;border-radius:12px;
+            <span style="background:var(--primary-10);color:var(--primary);padding:4px 14px;border-radius:12px;
                          font-size:0.8em;font-weight:600;">Powered by Gemini</span>
         </div>
-        <h1 style="color:#1e293b;">Vyhodnocujem váš hovor...</h1>
-        <p style="color:#6b7280;">AI analyzuje váš výkon</p>
+        <h1>Vyhodnocuji váš hovor...</h1>
+        <p style="color:var(--text-secondary);">AI analyzuje váš výkon</p>
     </div>
     """, unsafe_allow_html=True)
 
-    # Progress animation
+    # Progress
     progress_bar = st.progress(0)
     status_text = st.empty()
 
     steps = [
-        (25, "📝 Spracovávam prepis hovoru..."),
-        (50, "🎯 Analyzujem plnenie cieľov..."),
-        (75, "📊 Vyhodnocujem kvalitu komunikácie..."),
-        (90, "💡 Generujem spätnú väzbu..."),
+        (25, "📝 Přepisuji audio..."),
+        (50, "🎯 Analyzuji plnění cílů..."),
+        (75, "📊 Hodnotím kvalitu komunikace..."),
+        (90, "💡 Generuji zpětnou vazbu..."),
     ]
 
     for pct, msg in steps:
         progress_bar.progress(pct)
-        status_text.markdown(f"<p style='text-align:center;color:#6b7280;'>{msg}</p>", unsafe_allow_html=True)
+        status_text.markdown(f"<p style='text-align:center;color:var(--text-secondary);'>{msg}</p>", unsafe_allow_html=True)
         time.sleep(0.8)
 
     # Run evaluation
@@ -60,28 +57,27 @@ def render_evaluating():
     eval_data = evaluate_call(transcript, scenario, checkpoints)
     eval_id, overall_score = save_evaluation(session_id, eval_data)
 
-    # Calculate and award XP
+    # XP
     user = st.session_state.get("user", {})
     user_id = user.get("id")
     xp_total, xp_reasons = calculate_xp_for_session(user_id, session_id, overall_score, session["scenario_id"])
     new_level = award_xp(user_id, session_id, xp_total, "; ".join(xp_reasons))
 
-    # Check achievements
+    # Achievements
     new_achievements = check_and_award_achievements(user_id)
 
-    # Update user in session state
+    # Update session state
     updated_user = query("SELECT * FROM users WHERE id = ?", (user_id,), one=True)
     if updated_user:
         st.session_state["user"] = dict(updated_user)
 
-    # Store results for scorecard
     st.session_state["eval_xp_earned"] = xp_total
     st.session_state["eval_xp_reasons"] = xp_reasons
     st.session_state["eval_new_achievements"] = new_achievements
     st.session_state["eval_new_level"] = new_level
 
     progress_bar.progress(100)
-    status_text.markdown("<p style='text-align:center;color:#10b981;font-weight:600;'>✅ Hotovo!</p>", unsafe_allow_html=True)
+    status_text.markdown("<p style='text-align:center;color:var(--emerald);font-weight:600;'>✅ Hotovo!</p>", unsafe_allow_html=True)
     time.sleep(0.5)
 
     st.session_state["page"] = "scorecard"
@@ -98,7 +94,7 @@ def render():
     session = query("SELECT * FROM sessions WHERE id = ?", (session_id,), one=True)
     evaluation = get_session_evaluation(session_id)
     if not session or not evaluation:
-        st.error("Dáta nenájdené.")
+        st.error("Data nenalezena.")
         return
 
     scenario = get_scenario(session["scenario_id"])
@@ -108,55 +104,73 @@ def render():
     new_achievements = st.session_state.get("eval_new_achievements", [])
 
     # Header
-    st.markdown("<h1 style='text-align:center;'>Výsledky hodnotenia</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align:center;'>Výsledky hodnocení</h1>", unsafe_allow_html=True)
 
     # XP badge
     st.markdown(f"""
     <div style="text-align:center;margin-bottom:24px;">
-        <span style="background:#dcfce7;color:#16a34a;padding:6px 16px;border-radius:20px;font-weight:600;">
-            ⭐ +{xp_earned} XP
+        <span class="score-badge score-green" style="padding:6px 16px;font-size:1em;">
+            ⭐ Level Up! +{xp_earned} XP
         </span>
     </div>
     """, unsafe_allow_html=True)
 
     # Achievement popups
     for ach in new_achievements:
-        render_achievement_popup(ach)
+        st.markdown(f"""
+        <div style="background:linear-gradient(135deg,#fbbf24,#f59e0b);color:white;
+                    border-radius:12px;padding:20px;text-align:center;margin:16px 0;">
+            <div style="font-size:3em;margin-bottom:8px;">{ach.get('icon', '🏆')}</div>
+            <div style="font-size:1.2em;font-weight:700;">Nový odznak!</div>
+            <div style="font-size:1em;font-weight:600;margin-top:4px;">{ach.get('name', '')}</div>
+        </div>""", unsafe_allow_html=True)
 
     # Main layout
     col_left, col_right = st.columns([1, 2])
 
     with col_left:
         # Big score
-        render_big_score(evaluation["overall_score"])
+        overall = evaluation["overall_score"]
+        color = score_color(overall)
+        from utils.helpers import score_label
+        label = score_label(overall)
+        st.markdown(f"""
+        <div style="text-align:center;">
+            <div style="font-size:4em;font-weight:800;color:{color};line-height:1;">{overall:.0f}%</div>
+            <div style="color:{color};font-weight:600;margin-top:4px;font-size:1.1em;">{label}</div>
+        </div>
+        """, unsafe_allow_html=True)
+
         st.markdown("<br>", unsafe_allow_html=True)
 
         # Radar chart
-        scores = {
-            "communication_clarity": evaluation.get("communication_clarity", 5),
-            "empathy_rapport": evaluation.get("empathy_rapport", 5),
-            "active_listening": evaluation.get("active_listening", 5),
-            "professional_language": evaluation.get("professional_language", 5),
-            "call_structure": evaluation.get("call_structure", 5),
-            "call_control": evaluation.get("call_control", 5),
-            "objection_handling": evaluation.get("objection_handling", 5),
-        }
-        fig = create_radar_chart(scores, title="Analýza zručností")
+        scores = {k: evaluation.get(k, 5) for k in [
+            "communication_clarity", "empathy_rapport", "active_listening",
+            "professional_language", "call_structure", "call_control", "objection_handling",
+        ]}
+        dark = st.session_state.get("dark_mode", True)
+        fig = create_radar_chart(scores, title="Analýza dovedností")
+        fig.update_layout(
+            paper_bgcolor="rgba(0,0,0,0)" if dark else "white",
+            polar=dict(bgcolor="rgba(0,0,0,0)" if dark else "white"),
+            font=dict(color="#f1f5f9" if dark else "#0f172a"),
+        )
         st.plotly_chart(fig, use_container_width=True)
 
     with col_right:
         # Goal status
         goal = evaluation.get("goal_achieved", "PARTIAL")
-        label, color, icon = goal_badge(goal)
+        glabel, gcolor, gicon = goal_badge(goal)
         st.markdown(f"""
-        <div style="background:{color}15;border:1px solid {color}30;border-radius:10px;padding:14px;margin-bottom:16px;">
-            <span class="material-symbols-outlined" style="color:{color};vertical-align:middle;">{icon}</span>
-            <strong style="color:{color};margin-left:4px;">Cieľ hovoru: {label}</strong>
+        <div style="background:color-mix(in srgb, {gcolor} 15%, transparent);border:1px solid color-mix(in srgb, {gcolor} 30%, transparent);
+                    border-radius:10px;padding:14px;margin-bottom:16px;">
+            <span class="material-symbols-outlined" style="color:{gcolor};vertical-align:middle;">{gicon}</span>
+            <strong style="color:{gcolor};margin-left:4px;">Cíl hovoru: {glabel}</strong>
         </div>
         """, unsafe_allow_html=True)
 
         # Checkpoints
-        st.markdown("### Plnenie checkpointov")
+        st.markdown("<h3>Plnění kontrolních bodů</h3>", unsafe_allow_html=True)
         checkpoint_results = []
         raw = evaluation.get("checkpoint_results")
         if raw:
@@ -171,27 +185,28 @@ def render():
             passed = cr.get("passed", False)
             evidence = cr.get("evidence", "")
             cp = cp_map.get(cp_id, {})
-
             status_icon = "✅" if passed else "❌"
-            bg_color = "#f0fdf4" if passed else "#fef2f2"
-            border_color = "#10b981" if passed else "#ef4444"
+            cls = "passed" if passed else "failed"
 
             st.markdown(f"""
-            <div class="checkpoint-item {'passed' if passed else 'failed'}">
-                <span style="font-size:1.2em;">{status_icon}</span>
+            <div class="cc-checkpoint {cls}">
+                <span class="cp-icon">{status_icon}</span>
                 <div>
-                    <div style="font-weight:600;color:#1e293b;font-size:0.9em;">{cp.get('name', f'Checkpoint {cp_id}')}</div>
-                    <div style="color:#6b7280;font-size:0.8em;font-style:italic;">"{evidence}"</div>
+                    <div class="cp-name">{cp.get('name', f'Bod {cp_id}')}</div>
+                    <div class="cp-evidence">„{evidence}"</div>
                 </div>
-            </div>
-            """, unsafe_allow_html=True)
+            </div>""", unsafe_allow_html=True)
 
         st.markdown("<br>", unsafe_allow_html=True)
 
         # Strengths & Improvements
         col_s, col_i = st.columns(2)
         with col_s:
-            st.markdown("### ✅ Silné stránky")
+            st.markdown("""<div class="cc-card">
+                <h4 style="display:flex;align-items:center;gap:8px;margin:0 0 12px;">
+                    <span class="material-symbols-outlined" style="color:var(--emerald);">thumb_up</span>
+                    Silné stránky
+                </h4>""", unsafe_allow_html=True)
             strengths = evaluation.get("strengths", "[]")
             if isinstance(strengths, str):
                 try:
@@ -199,10 +214,15 @@ def render():
                 except (json.JSONDecodeError, TypeError):
                     strengths = []
             for s in strengths:
-                st.markdown(f"- {s}")
+                st.markdown(f'<div style="padding:4px 0;font-size:0.9em;color:var(--text);">• {s}</div>', unsafe_allow_html=True)
+            st.markdown("</div>", unsafe_allow_html=True)
 
         with col_i:
-            st.markdown("### 🔧 Na zlepšenie")
+            st.markdown("""<div class="cc-card">
+                <h4 style="display:flex;align-items:center;gap:8px;margin:0 0 12px;">
+                    <span class="material-symbols-outlined" style="color:var(--amber);">construction</span>
+                    Oblasti ke zlepšení
+                </h4>""", unsafe_allow_html=True)
             improvements = evaluation.get("improvements", "[]")
             if isinstance(improvements, str):
                 try:
@@ -210,7 +230,8 @@ def render():
                 except (json.JSONDecodeError, TypeError):
                     improvements = []
             for imp in improvements:
-                st.markdown(f"- {imp}")
+                st.markdown(f'<div style="padding:4px 0;font-size:0.9em;color:var(--text);">• {imp}</div>', unsafe_allow_html=True)
+            st.markdown("</div>", unsafe_allow_html=True)
 
         st.markdown("<br>", unsafe_allow_html=True)
 
@@ -218,49 +239,49 @@ def render():
         coaching_tip = evaluation.get("coaching_tip", "")
         if coaching_tip:
             st.markdown(f"""
-            <div class="coaching-tip-box">
-                <h4>💡 Coaching tip</h4>
-                <p style="font-size:0.9em;opacity:0.95;">{coaching_tip}</p>
-            </div>
-            """, unsafe_allow_html=True)
+            <div class="cc-tip">
+                <div class="tip-label">
+                    <span class="material-symbols-outlined">psychology</span>
+                    AI Coaching Tip
+                </div>
+                <div class="tip-text">{coaching_tip}</div>
+            </div>""", unsafe_allow_html=True)
 
     st.markdown("<br>", unsafe_allow_html=True)
 
-    # Transcript (expandable)
-    with st.expander("📄 Prepis hovoru"):
+    # Transcript
+    with st.expander("📄 Přepis hovoru"):
         transcript = session.get("transcript", "")
         if transcript:
             for line in transcript.split("\n"):
                 if line.strip():
                     if line.startswith("Agent:"):
                         st.markdown(f"""
-                        <div style="background:#eff6ff;border-radius:8px;padding:10px 14px;margin:4px 0 4px 40px;">
-                            <strong style="color:#137fec;">Agent</strong><br>
+                        <div class="cc-card" style="margin:4px 0 4px 40px;background:var(--primary-10);">
+                            <strong style="color:var(--primary);">Agent</strong><br>
                             {line.replace('Agent: ', '')}
-                        </div>
-                        """, unsafe_allow_html=True)
+                        </div>""", unsafe_allow_html=True)
                     else:
                         st.markdown(f"""
-                        <div style="background:#f3f4f6;border-radius:8px;padding:10px 14px;margin:4px 40px 4px 0;">
-                            <strong style="color:#6b7280;">Zákazník</strong><br>
+                        <div class="cc-card" style="margin:4px 40px 4px 0;">
+                            <strong style="color:var(--text-secondary);">Zákazník</strong><br>
                             {line.split(': ', 1)[-1] if ': ' in line else line}
-                        </div>
-                        """, unsafe_allow_html=True)
+                        </div>""", unsafe_allow_html=True)
         else:
-            st.info("Prepis nie je k dispozícii.")
+            st.info("Přepis není k dispozici.")
 
-    # Navigation buttons
+    # Navigation
     st.markdown("<br>", unsafe_allow_html=True)
     c1, c2, c3 = st.columns(3)
     with c1:
-        if st.button("🏠 Domov", use_container_width=True):
+        if st.button("🏠 Domů", use_container_width=True):
             _cleanup_and_go("agent_home")
     with c2:
-        if st.button("🔄 Skúsiť znova", use_container_width=True):
+        if st.button("🔄 Zkusit znovu", use_container_width=True):
             st.session_state["page"] = "pre_call_briefing"
             st.rerun()
     with c3:
-        if st.button("➡️ Ďalší scenár", use_container_width=True):
+        if st.button("➡️ Další scénář", use_container_width=True):
             _cleanup_and_go("scenario_browser")
 
 

@@ -5,43 +5,25 @@ from utils.helpers import format_score
 
 def render_leaderboard(data, show_rank=True):
     if not data:
-        st.info("Zatiaľ žiadne dáta pre leaderboard.")
+        st.info("Zatím žádná data pro žebříček.")
         return
 
-    header_cols = st.columns([0.5, 2.5, 1, 1, 1])
-    with header_cols[0]:
-        st.markdown("**#**")
-    with header_cols[1]:
-        st.markdown("**Agent**")
-    with header_cols[2]:
-        st.markdown("**Level**")
-    with header_cols[3]:
-        st.markdown("**Skóre**")
-    with header_cols[4]:
-        st.markdown("**Sessions**")
-
-    st.divider()
-
-    colors = ["#fbbf24", "#c0c0c0", "#cd7f32"]
-
+    colors = ["#f59e0b", "#94a3b8", "#cd7f32", "#137fec", "#8b5cf6"]
+    lb_html = '<div class="cc-leaderboard">'
     for i, agent in enumerate(data[:10]):
-        rank = i + 1
-        rank_color = colors[i] if i < 3 else "#6b7280"
+        bg = colors[i % len(colors)]
+        score = agent.get("avg_score", 0)
         level_name = LEVEL_NAMES.get(agent.get("level", 1), "")
 
-        cols = st.columns([0.5, 2.5, 1, 1, 1])
-        with cols[0]:
-            if rank <= 3:
-                medals = ["🥇", "🥈", "🥉"]
-                st.markdown(medals[i])
-            else:
-                st.markdown(f"**{rank}**")
-        with cols[1]:
-            st.markdown(f"**{agent['name']}**")
-        with cols[2]:
-            st.markdown(f"Lv.{agent.get('level', 1)} {level_name}")
-        with cols[3]:
-            score = agent.get("avg_score", 0)
-            st.markdown(f"**{format_score(score)}**")
-        with cols[4]:
-            st.markdown(str(agent.get("session_count", 0)))
+        lb_html += f"""
+        <div class="cc-lb-row">
+            <div class="rank">{i + 1}</div>
+            <div class="avatar" style="background:{bg};">{agent['name'][0]}</div>
+            <div class="agent-name">{agent['name']}</div>
+            <div class="agent-level">{level_name}</div>
+            <div class="agent-score" style="color:{'var(--emerald)' if score >= 80 else 'var(--amber)'};">
+                {format_score(score)}
+            </div>
+        </div>"""
+    lb_html += "</div>"
+    st.markdown(lb_html, unsafe_allow_html=True)

@@ -1,9 +1,5 @@
 import streamlit as st
-from services.gamification_service import get_user_achievements, get_earned_achievements
-from components.achievement_badge import render_achievement_badge
-from components.score_card import render_xp_bar
-from services.gamification_service import get_xp_progress_pct
-from config import LEVEL_THRESHOLDS
+from services.gamification_service import get_user_achievements
 
 
 def render():
@@ -14,25 +10,24 @@ def render():
     earned = [a for a in all_achievements if a.get("earned_at")]
     locked = [a for a in all_achievements if not a.get("earned_at")]
 
-    # Header
     total = len(all_achievements)
     earned_count = len(earned)
     pct = int((earned_count / total) * 100) if total > 0 else 0
 
     st.markdown(f"""
-    <h1 style="margin-bottom:4px;">Vaše achievementy</h1>
-    <p style="color:#6b7280;">{earned_count}/{total} odznakov získaných | {user.get('xp', 0):,} XP celkom</p>
+    <h1 style="margin-bottom:4px;">Vaše úspěchy</h1>
+    <p style="color:var(--text-secondary);">
+        {earned_count}/{total} odznaky získány • {user.get('xp', 0):,} celkem XP
+    </p>
     """, unsafe_allow_html=True)
 
-    # Progress bar
     st.progress(pct / 100)
 
     st.markdown("<br>", unsafe_allow_html=True)
 
-    # Filters
     filter_tab = st.radio(
-        "Filter",
-        ["Všetky", "Získané", "Zamknuté"],
+        "Filtr",
+        ["Všechny", "Získané", "Zamknuté"],
         horizontal=True,
         label_visibility="collapsed",
     )
@@ -46,24 +41,41 @@ def render():
 
     st.markdown("<br>", unsafe_allow_html=True)
 
-    # Earned section
-    if filter_tab in ["Všetky", "Získané"] and earned:
-        st.markdown("### Získané odznaky")
-        cols = st.columns(min(len(earned), 4))
-        for i, ach in enumerate(earned):
-            with cols[i % 4]:
-                render_achievement_badge(ach, earned=True)
+    milestones = [a for a in display if a.get("category") == "milestone"]
+    skills = [a for a in display if a.get("category") != "milestone"]
+
+    if milestones:
+        st.markdown("<h3>Milníky</h3>", unsafe_allow_html=True)
+        _render_achievement_grid(milestones)
         st.markdown("<br>", unsafe_allow_html=True)
 
-    # Locked section
-    if filter_tab in ["Všetky", "Zamknuté"] and locked:
-        st.markdown("### Zamknuté odznaky")
-        cols = st.columns(min(len(locked), 4))
-        for i, ach in enumerate(locked):
-            with cols[i % 4]:
-                render_achievement_badge(ach, earned=False)
-                st.markdown(f"""
-                <div style="font-size:0.75em;color:#9ca3af;text-align:center;margin-top:4px;">
-                    {ach.get('description', '')}
-                </div>
-                """, unsafe_allow_html=True)
+    if skills:
+        st.markdown("<h3>Dovednosti</h3>", unsafe_allow_html=True)
+        _render_achievement_grid(skills)
+
+
+def _render_achievement_grid(achievements):
+    ach_colors = ["amber", "emerald", "purple", "amber", "emerald", "purple"]
+    grid_html = '<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">'
+    for i, ach in enumerate(achievements):
+        is_earned = ach.get("earned_at") is not None
+        color = ach_colors[i % len(ach_colors)]
+
+        if is_earned:
+            date_str = ach["earned_at"][:10] if ach.get("earned_at") else ""
+            grid_html += f"""
+            <div class="cc-achievement earned-{color}">
+                <div style="font-size:2em;">{ach.get('icon', '🏆')}</div>
+                <div class="ach-name">{ach.get('name', '')}</div>
+                <div class="ach-sub">Získáno {date_str}</div>
+            </div>"""
+        else:
+            grid_html += f"""
+            <div class="cc-achievement locked">
+                <div style="font-size:2em;filter:grayscale(1);opacity:0.5;">{ach.get('icon', '🏆')}</div>
+                <div class="ach-name" style="color:var(--text-muted);">{ach.get('name', '')}</div>
+                <div class="ach-sub">🔒 Zamknuto</div>
+                <div style="font-size:0.75em;color:var(--text-muted);margin-top:4px;">{ach.get('description', '')}</div>
+            </div>"""
+    grid_html += '</div>'
+    st.markdown(grid_html, unsafe_allow_html=True)
