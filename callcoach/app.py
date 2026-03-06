@@ -57,10 +57,37 @@ def render_sidebar():
                 ("scenario_browser", "target", "Scénáře"),
             ]
 
+        # Build all nav CSS upfront: icons via ::before + active state highlight
+        nav_css = ""
         for page_key, icon, label in nav_items:
             is_active = st.session_state.get("page") == page_key
-            prefix = "● " if is_active else "   "
-            if st.button(f"{prefix}{label}", key=f"nav_{page_key}", use_container_width=True):
+            mid = f"nav-marker-{page_key}"
+            nav_css += f"""
+            [data-testid="element-container"]:has(#{mid}) + [data-testid="element-container"] .stButton > button::before {{
+                content: "{icon}";
+                font-family: 'Material Symbols Outlined';
+                font-size: 20px;
+                margin-right: 10px;
+                vertical-align: middle;
+                font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            }}
+            """
+            if is_active:
+                nav_css += f"""
+                [data-testid="element-container"]:has(#{mid}) + [data-testid="element-container"] .stButton > button {{
+                    background: var(--primary-10) !important;
+                    color: var(--primary) !important;
+                    font-weight: 600 !important;
+                }}
+                """
+        st.markdown(f"<style>{nav_css}</style>", unsafe_allow_html=True)
+
+        for page_key, icon, label in nav_items:
+            st.markdown(
+                f'<span id="nav-marker-{page_key}" style="display:none"></span>',
+                unsafe_allow_html=True,
+            )
+            if st.button(label, key=f"nav_{page_key}", use_container_width=True):
                 st.session_state["page"] = page_key
                 st.rerun()
 
@@ -68,10 +95,11 @@ def render_sidebar():
 
         # Dark/Light toggle
         st.divider()
-        mode_icon = "light_mode" if st.session_state.get("dark_mode") else "dark_mode"
-        mode_label = "Světlý režim" if st.session_state.get("dark_mode") else "Tmavý režim"
-        if st.button(f"{'☀️' if st.session_state.get('dark_mode') else '🌙'} {mode_label}", key="toggle_mode", use_container_width=True):
-            st.session_state["dark_mode"] = not st.session_state.get("dark_mode", True)
+        dark = st.session_state["dark_mode"]
+        mode_label = "Světlý režim" if dark else "Tmavý režim"
+        mode_emoji = "☀️" if dark else "🌙"
+        if st.button(f"{mode_emoji} {mode_label}", key="toggle_mode", use_container_width=True):
+            st.session_state["dark_mode"] = not dark
             st.rerun()
 
         st.divider()
