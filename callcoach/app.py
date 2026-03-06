@@ -47,47 +47,24 @@ def render_sidebar():
 
         if role == "agent":
             nav_items = [
-                ("agent_home", "home", "Domů"),
-                ("scenario_browser", "target", "Tréninkové scénáře"),
-                ("achievements", "emoji_events", "Úspěchy"),
+                ("agent_home", "🏠  Domů"),
+                ("scenario_browser", "🎯  Tréninkové scénáře"),
+                ("achievements", "🏆  Úspěchy"),
             ]
         else:
             nav_items = [
-                ("manager_dashboard", "dashboard", "Přehled týmu"),
-                ("scenario_browser", "target", "Scénáře"),
+                ("manager_dashboard", "📊  Přehled týmu"),
+                ("scenario_browser", "🎯  Scénáře"),
             ]
 
-        # Build all nav CSS upfront: icons via ::before + active state highlight
-        nav_css = ""
-        for page_key, icon, label in nav_items:
+        for page_key, label in nav_items:
             is_active = st.session_state.get("page") == page_key
-            mid = f"nav-marker-{page_key}"
-            nav_css += f"""
-            [data-testid="element-container"]:has(#{mid}) + [data-testid="element-container"] .stButton > button::before {{
-                content: "{icon}";
-                font-family: 'Material Symbols Outlined';
-                font-size: 20px;
-                margin-right: 10px;
-                vertical-align: middle;
-                font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
-            }}
-            """
-            if is_active:
-                nav_css += f"""
-                [data-testid="element-container"]:has(#{mid}) + [data-testid="element-container"] .stButton > button {{
-                    background: var(--primary-10) !important;
-                    color: var(--primary) !important;
-                    font-weight: 600 !important;
-                }}
-                """
-        st.markdown(f"<style>{nav_css}</style>", unsafe_allow_html=True)
-
-        for page_key, icon, label in nav_items:
-            st.markdown(
-                f'<span id="nav-marker-{page_key}" style="display:none"></span>',
-                unsafe_allow_html=True,
-            )
-            if st.button(label, key=f"nav_{page_key}", use_container_width=True):
+            if st.button(
+                label,
+                key=f"nav_{page_key}",
+                use_container_width=True,
+                type="primary" if is_active else "secondary",
+            ):
                 st.session_state["page"] = page_key
                 st.rerun()
 

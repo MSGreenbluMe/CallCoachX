@@ -125,17 +125,58 @@ def inject_custom_css():
         border-bottom: 1px solid var(--border);
     }}
 
+    /* Force Streamlit containers transparent so custom backgrounds work */
+    [data-testid="stAppViewContainer"],
+    [data-testid="stMainBlockContainer"],
+    [data-testid="stMain"],
+    .main,
+    .main .block-container,
+    [data-testid="stVerticalBlock"],
+    [data-testid="stHorizontalBlock"],
+    [data-testid="column"],
+    [data-testid="stColumn"],
+    [data-testid="element-container"],
+    [data-testid="stMarkdownContainer"],
+    [data-testid="stExpander"],
+    .stMarkdown,
+    .stColumn,
+    [data-testid="stSidebarContent"],
+    [data-testid="stSidebarUserContent"],
+    [data-testid="stBottomBlockContainer"] {{
+        background-color: transparent !important;
+    }}
+
+    /* Streamlit alerts / info boxes */
+    .stAlert {{
+        background-color: var(--bg-card) !important;
+        border-color: var(--border) !important;
+        color: var(--text) !important;
+    }}
+
+    /* Expander content */
+    [data-testid="stExpanderDetails"] {{
+        background-color: var(--bg-card) !important;
+        border-color: var(--border) !important;
+    }}
+    details summary {{
+        background-color: var(--bg-card) !important;
+        color: var(--text) !important;
+    }}
+
     /* Sidebar */
-    div[data-testid="stSidebar"] {{
+    section[data-testid="stSidebar"],
+    section[data-testid="stSidebar"] > div {{
         background-color: var(--bg-sidebar) !important;
         border-right: 1px solid var(--border) !important;
     }}
-    div[data-testid="stSidebar"] * {{
+    section[data-testid="stSidebar"] * {{
         color: var(--text) !important;
     }}
-    div[data-testid="stSidebar"] .stButton > button {{
+    /* All sidebar buttons — secondary (inactive nav, toggle, logout) */
+    section[data-testid="stSidebar"] button {{
         background-color: transparent !important;
         border: none !important;
+        box-shadow: none !important;
         color: var(--text-secondary) !important;
         text-align: left !important;
         padding: 8px 12px !important;
@@ -143,10 +184,17 @@ def inject_custom_css():
         font-weight: 500 !important;
         font-size: 0.9em !important;
     }}
-    div[data-testid="stSidebar"] .stButton > button:hover {{
+    section[data-testid="stSidebar"] button:hover {{
         background-color: var(--bg-hover) !important;
     }}
-    div[data-testid="stSidebar"] hr {{
+    /* Active nav item (primary button) in sidebar */
+    section[data-testid="stSidebar"] button[kind="primary"],
+    section[data-testid="stSidebar"] button[data-testid="baseButton-primary"] {{
+        background: var(--primary-10) !important;
+        color: var(--primary) !important;
+        font-weight: 600 !important;
+    }}
+    section[data-testid="stSidebar"] hr {{
         border-color: var(--border) !important;
     }}
 
@@ -171,8 +219,8 @@ def inject_custom_css():
 
     /* Cards */
     .cc-card {{
-        background: var(--bg-card);
-        border: 1px solid var(--border);
+        background: var(--bg-card) !important;
+        border: 1px solid var(--border) !important;
         border-radius: 12px;
         padding: 20px;
         box-shadow: var(--shadow);
@@ -180,8 +228,8 @@ def inject_custom_css():
 
     /* Metric cards - from Stitch agent_training_dashboard */
     .cc-metric {{
-        background: var(--bg-card);
-        border: 1px solid var(--border);
+        background: var(--bg-card) !important;
+        border: 1px solid var(--border) !important;
         border-radius: 12px;
         padding: 24px;
         position: relative;
@@ -228,8 +276,8 @@ def inject_custom_css():
         display: flex;
         flex-direction: column;
         border-radius: 12px;
-        border: 1px solid var(--border);
-        background: var(--bg-card);
+        border: 1px solid var(--border) !important;
+        background: var(--bg-card) !important;
         overflow: hidden;
         transition: box-shadow 0.2s;
     }}
@@ -272,6 +320,7 @@ def inject_custom_css():
         flex: 1;
         display: flex;
         flex-direction: column;
+        background: var(--bg-card) !important;
     }}
     .cc-scenario-card .card-body h3 {{
         color: var(--text);
@@ -345,8 +394,8 @@ def inject_custom_css():
 
     /* XP Progress bar - from Stitch */
     .cc-xp-bar {{
-        background: var(--bg-card);
-        border: 1px solid var(--border);
+        background: var(--bg-card) !important;
+        border: 1px solid var(--border) !important;
         border-radius: 12px;
         padding: 16px 20px;
         box-shadow: var(--shadow);
@@ -393,8 +442,8 @@ def inject_custom_css():
     .cc-table {{
         width: 100%;
         border-collapse: collapse;
-        background: var(--bg-card);
-        border: 1px solid var(--border);
+        background: var(--bg-card) !important;
+        border: 1px solid var(--border) !important;
         border-radius: 12px;
         overflow: hidden;
         box-shadow: var(--shadow);
@@ -591,9 +640,18 @@ def inject_custom_css():
     /* Radio buttons */
     div[role="radiogroup"] {{
         background: {('#0c151a' if dark else '#f1f5f9')} !important;
-        border: 1px solid var(--border);
+        border: 1px solid var(--border) !important;
         border-radius: 8px;
         padding: 4px;
+    }}
+    div[role="radiogroup"] label {{
+        color: var(--text) !important;
+    }}
+    div[role="radiogroup"] label span {{
+        color: var(--text) !important;
+    }}
+    div[role="radiogroup"] label p {{
+        color: var(--text) !important;
     }}
 
     /* Text input overrides */
